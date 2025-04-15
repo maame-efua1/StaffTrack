@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using StaffTrack.Data;
-using StaffTrack.Models;
-using StaffTrack.DTOs;
+using StaffTrack.API.DTOs;
+using StaffTrack.API.Data;
+using StaffTrack.API.Models;
 
-namespace StaffTrack.Controllers
+namespace StaffTrack.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

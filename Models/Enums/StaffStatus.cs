@@ -1,4 +1,4 @@
-﻿namespace StaffTrack.Models.Enums
+﻿namespace StaffTrack.API.Models.Enums
 {
     public enum StaffStatus
     {

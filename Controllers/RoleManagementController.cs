@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
-using StaffTrack.Models;
+using StaffTrack.API.Models;
 using System.Threading.Tasks;
 
-namespace StaffTrack.Controllers
+namespace StaffTrack.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

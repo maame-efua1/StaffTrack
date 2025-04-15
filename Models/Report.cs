@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace StaffTrack.Models
+namespace StaffTrack.API.Models
 {
     public class Report
     {

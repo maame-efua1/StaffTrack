@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using StaffTrack.Data;
-using StaffTrack.Models;
-using StaffTrack.DTOs;
+using StaffTrack.API.Models;
+using StaffTrack.API.DTOs;
+using StaffTrack.API.Data;
 
-namespace StaffTrack.Controllers
+namespace StaffTrack.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -27,7 +27,7 @@ namespace StaffTrack.Controllers
             if (reports == null || !reports.Any())
                 return NotFound(new { Message = "No reports found." });
 
-            var reportDtos = _mapper.Map<IEnumerable<ReportDTO>>(reports);  // Map entities to DTOs
+            var reportDtos = _mapper.Map<IEnumerable<ReportDTO>>(reports);  
             return Ok(new { Message = "Reports retrieved successfully.", Data = reportDtos });
         }
 
@@ -75,7 +75,7 @@ namespace StaffTrack.Controllers
                     throw;
             }
 
-            return Ok(new { Message = "Report updated successfully." });  // Success message here
+            return Ok(new { Message = "Report updated successfully." });  
         }
 
         [HttpDelete("delete/{id}")]
@@ -88,7 +88,7 @@ namespace StaffTrack.Controllers
             _context.Reports.Remove(report);
             await _context.SaveChangesAsync();
 
-            return Ok(new { Message = "Report deleted successfully." });  // Success message here
+            return Ok(new { Message = "Report deleted successfully." });  
         }
 
         private bool ReportExists(int id)

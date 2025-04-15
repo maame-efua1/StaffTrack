@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using StaffTrack.Models.Enums;
+using StaffTrack.API.Models.Enums;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace StaffTrack.Models
+namespace StaffTrack.API.Models
 {
     public class User : IdentityUser
     {

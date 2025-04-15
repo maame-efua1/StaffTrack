@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using StaffTrack.Models;
+using StaffTrack.API.Models;
 
-namespace StaffTrack.Data
+namespace StaffTrack.API.Data
 {
     public class StaffTrackDbContext : IdentityDbContext<User>
     {

@@ -1,5 +1,5 @@
 ﻿
-namespace StaffTrack.DTOs
+namespace StaffTrack.API.DTOs
 {
     public class DepartmentDTO
     {

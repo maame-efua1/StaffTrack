@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using StaffTrack.Models.Enums;
+using StaffTrack.API.Models.Enums;
 
-namespace StaffTrack.DTOs
+namespace StaffTrack.API.DTOs
 {
     public class RegisterDTO
     {

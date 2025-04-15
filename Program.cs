@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using StaffTrack.Data;
-using StaffTrack.Models;
+using StaffTrack.API.Data;
+using StaffTrack.API.Models;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -78,6 +78,18 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("User", policy => policy.RequireRole("User"));
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowBlazor", policy =>
+    {
+        policy.WithOrigins("https://localhost:5000") // Blazor WebAssembly URL
+              .AllowAnyMethod()
+              .AllowAnyHeader()
+              .AllowCredentials();
+    });
+});
+
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -90,6 +102,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+// Apply CORS middleware
+app.UseCors("AllowBlazor");
 
 app.UseHttpsRedirection();
 

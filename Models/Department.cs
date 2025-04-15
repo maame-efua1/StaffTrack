@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace StaffTrack.Models
+namespace StaffTrack.API.Models
 {
     public class Department
     {

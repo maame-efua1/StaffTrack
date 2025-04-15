@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using StaffTrack.DTOs;
-using StaffTrack.Models;
+using StaffTrack.API.DTOs;
+using StaffTrack.API.Models;
 
 public class MappingProfile : Profile
 {

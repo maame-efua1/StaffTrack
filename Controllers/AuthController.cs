@@ -1,16 +1,16 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using StaffTrack.DTOs;
-using StaffTrack.Models;
+using StaffTrack.API.DTOs;
+using StaffTrack.API.Models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using System.Threading.Tasks;
-using StaffTrack.Models.Enums;
+using StaffTrack.API.Models.Enums;
 
-namespace StaffTrack.Controllers
+namespace StaffTrack.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -30,9 +30,9 @@ namespace StaffTrack.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterDTO register)
         {
-            var staffStatus = Enum.TryParse<Models.Enums.StaffStatus>(register.StaffStatus, out var parsedStatus)
+            var staffStatus = Enum.TryParse<StaffStatus>(register.StaffStatus, out var parsedStatus)
                       ? parsedStatus
-                      : Models.Enums.StaffStatus.Staff;
+                      : StaffStatus.Staff;
 
             var user = new User
             {
@@ -81,7 +81,7 @@ namespace StaffTrack.Controllers
                 return Unauthorized("Invalid credentials.");
             }
 
-            var token =  GenerateJwtToken(user);
+            var token = await GenerateJwtToken(user);
             return Ok(new { Token = token });
         }
 
@@ -101,13 +101,22 @@ namespace StaffTrack.Controllers
                     ValidIssuer = _configuration["Jwt:Issuer"],
                     ValidateAudience = true,
                     ValidAudience = _configuration["Jwt:Audience"],
-                    ClockSkew = TimeSpan.Zero // optional: to eliminate time drift
+                    ClockSkew = TimeSpan.Zero
                 }, out SecurityToken validatedToken);
 
                 var jwtToken = (JwtSecurityToken)validatedToken;
                 var userId = jwtToken.Claims.First(x => x.Type == ClaimTypes.NameIdentifier).Value;
+                var fullName = jwtToken.Claims.FirstOrDefault(x => x.Type == "FullName")?.Value;
+                var email = jwtToken.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+                var role = jwtToken.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value;
 
-                return Ok(new { IsValid = true, UserId = userId });
+                return Ok(new
+                {
+                    IsValid = true,
+                    FullName = fullName,
+                    Email = email,
+                    Role = role
+                });
             }
             catch (Exception)
             {
@@ -116,30 +125,35 @@ namespace StaffTrack.Controllers
         }
 
 
-        private string GenerateJwtToken(User user)
+        private async Task<string> GenerateJwtToken(User user)
         {
+            var roles = await _userManager.GetRolesAsync(user);
+            var role = roles.FirstOrDefault() ?? "User";
+
             var claims = new[]
             {
         new Claim(ClaimTypes.NameIdentifier, user.Id),
         new Claim(ClaimTypes.Name, user.UserName),
         new Claim(ClaimTypes.Email, user.Email),
-        new Claim(ClaimTypes.Role, "User") // You can fetch actual roles if needed
+        new Claim(ClaimTypes.Role, role),
+        new Claim("FullName", user.FullName ?? "")
     };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-            var expireHours = int.Parse(_configuration["Jwt:ExpireHours"]); // Read from config
+            var expireHours = int.Parse(_configuration["Jwt:ExpireHours"]);
 
             var token = new JwtSecurityToken(
                 issuer: _configuration["Jwt:Issuer"],
                 audience: _configuration["Jwt:Audience"],
                 claims: claims,
                 expires: DateTime.Now.AddHours(expireHours),
-                signingCredentials: creds);
+                signingCredentials: creds
+            );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
 
         private string GenerateRandomPassword(int length = 10)
         {
@@ -153,6 +167,31 @@ namespace StaffTrack.Controllers
             }
 
             return new string(password);
+        }
+
+        [HttpPost("forgot-password")]
+        public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordDTO model)
+        {
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            if (user == null)
+            {
+                return NotFound("User not found.");
+            }
+
+            var resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
+            var newPassword = GenerateRandomPassword(); 
+
+            var resetResult = await _userManager.ResetPasswordAsync(user, resetToken, newPassword);
+            if (!resetResult.Succeeded)
+            {
+                return BadRequest(resetResult.Errors);
+            }
+
+            return Ok(new
+            {
+                Message = "Password reset successful. Use the new password to log in.",
+                NewPassword = newPassword
+            });
         }
 
 
