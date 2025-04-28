@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "StaffTrackAPI\\StaffTrackAPI.csproj",
+        "Action": "StartWithoutDebugging"
+      },
+      {
+        "Path": "StaffTrackUI\\StaffTrackUI.csproj",
+        "Action": "StartWithoutDebugging"
+      }
+    ]
+  }
+]

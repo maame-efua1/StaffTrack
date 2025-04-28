@@ -1,0 +1,100 @@
+﻿@page "/Login"
+@layout EmptyLayout
+@using StaffTrackShared.DTOs
+@using StaffTrackUI.Services
+@inject NavigationManager Navigation
+@inject HttpClient Http
+@inject IJSRuntime JSRuntime
+@inject LoginService LoginService
+
+<PageTitle>StaffTrack - Login</PageTitle>
+
+<div class="container">
+    <div class="login-form">
+        <img src="/images/logo.png" alt="StaffTrack Logo" class="logo" />
+        <h5 class="title">Log in to your account!</h5>
+        <p class="subtitle">Please provide your staff email and password</p>
+
+        <form @onsubmit="HandleLogin">
+            <!-- Email Input -->
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input @bind="loginModel.Email" type="email" id="email" class="input" placeholder="name@stafftrack.com" />
+            </div>
+
+            <!-- Password Input -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="password-wrapper">
+                    <input @bind="loginModel.Password" type="password" id="password"
+                           class="bg-gray-50/5 py-3 w-full rounded-lg border-none text-sm outline-none placeholder:text-sm placeholder:text-gray-300 focus:ring-0 focus:border-transparent dark:text-gray-100 dark:placeholder:text-zinc-100/60"
+                           placeholder="Enter password">
+                    <button type="button" id="password-addon"
+                            class="px-4 rounded ltr:rounded-l-none dark:bg-zinc-700 dark:border-zinc-600 dark:text-gray-100">
+                        <i class="mdi mdi-eye-outline"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <div class="error" role="alert">@ValidationError</div>
+
+            <!-- Submit Button -->
+            <div class="mb-3">
+                <button class="btn bg-actionPrimary-default border-transparent py-3 text-white block w-full hover:bg-actionPrimary-hover focus:ring focus:ring-actionPrimary-active/30 dark:border-actionPrimary-default"
+                        type="submit" disabled="@IsLoading">
+                    @if (IsLoading)
+                    {
+                        <span>Loading...</span>
+                    }
+                    else
+                    {
+                        <span>Log In</span>
+                    }
+                </button>
+            </div>
+        </form>
+
+        <p class="forgot-password">
+            Forgot your password? <a href="#">Reset now</a>
+        </p>
+    </div>
+</div>
+
+@code {
+    private LoginDTO loginModel = new LoginDTO();
+    private string? ValidationError { get; set; }
+    private bool IsLoading { get; set; }
+    private bool showPassword = false;
+
+    private async Task HandleLogin()
+    {
+        if (string.IsNullOrEmpty(loginModel.Email) || string.IsNullOrEmpty(loginModel.Password))
+        {
+            ValidationError = "Email and Password are required.";
+            return;
+        }
+
+        IsLoading = true;
+        try
+        {
+            if (await LoginService.TryLoginAsync(loginModel))
+            {
+                Navigation.NavigateTo("/counter");
+            }
+            else
+            {
+                ValidationError = "Invalid email or password.";
+            }
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+
+    private void TogglePasswordVisibility()
+    {
+        showPassword = !showPassword;
+    }
+}

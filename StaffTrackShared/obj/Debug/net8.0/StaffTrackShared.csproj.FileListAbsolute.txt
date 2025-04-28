@@ -1,0 +1,13 @@
+C:\Users\Eugenia Efua Quartey\source\repos\StaffTrack\StaffTrackShared\bin\Debug\net8.0\StaffTrackShared.deps.json
+C:\Users\Eugenia Efua Quartey\source\repos\StaffTrack\StaffTrackShared\bin\Debug\net8.0\StaffTrackShared.dll
+C:\Users\Eugenia Efua Quartey\source\repos\StaffTrack\StaffTrackShared\bin\Debug\net8.0\StaffTrackShared.pdb
+C:\Users\Eugenia Efua Quartey\source\repos\StaffTrack\StaffTrackShared\obj\Debug\net8.0\StaffTrackShared.csproj.AssemblyReference.cache
+C:\Users\Eugenia Efua Quartey\source\repos\StaffTrack\StaffTrackShared\obj\Debug\net8.0\StaffTrackShared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Eugenia Efua Quartey\source\repos\StaffTrack\StaffTrackShared\obj\Debug\net8.0\StaffTrackShared.AssemblyInfoInputs.cache
+C:\Users\Eugenia Efua Quartey\source\repos\StaffTrack\StaffTrackShared\obj\Debug\net8.0\StaffTrackShared.AssemblyInfo.cs
+C:\Users\Eugenia Efua Quartey\source\repos\StaffTrack\StaffTrackShared\obj\Debug\net8.0\StaffTrackShared.csproj.CoreCompileInputs.cache
+C:\Users\Eugenia Efua Quartey\source\repos\StaffTrack\StaffTrackShared\obj\Debug\net8.0\StaffTrackShared.sourcelink.json
+C:\Users\Eugenia Efua Quartey\source\repos\StaffTrack\StaffTrackShared\obj\Debug\net8.0\StaffTrackShared.dll
+C:\Users\Eugenia Efua Quartey\source\repos\StaffTrack\StaffTrackShared\obj\Debug\net8.0\refint\StaffTrackShared.dll
+C:\Users\Eugenia Efua Quartey\source\repos\StaffTrack\StaffTrackShared\obj\Debug\net8.0\StaffTrackShared.pdb
+C:\Users\Eugenia Efua Quartey\source\repos\StaffTrack\StaffTrackShared\obj\Debug\net8.0\ref\StaffTrackShared.dll

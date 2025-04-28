@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StaffTrackUI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7f6eb415bac43d3749fac5bd8039ec8b109a11b6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+09decee346dfc3e51d0a6567cef1c7fffbdd8e43")]
 [assembly: System.Reflection.AssemblyProductAttribute("StaffTrackUI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StaffTrackUI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
