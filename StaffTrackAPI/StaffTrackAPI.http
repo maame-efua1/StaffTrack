@@ -1,0 +1,6 @@
+@StaffTrackAPI_HostAddress = http://localhost:5049
+
+GET {{StaffTrackAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
