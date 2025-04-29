@@ -1,4 +1,4 @@
-﻿@page "/Login"
+﻿@page "/"
 @layout EmptyLayout
 @using StaffTrackShared.DTOs
 @using StaffTrackUI.Services
@@ -11,7 +11,7 @@
 
 <div class="container">
     <div class="login-form">
-        <img src="/images/logo.png" alt="StaffTrack Logo" class="logo" />
+        <img src="/logo.png" alt="StaffTrack Logo" class="logo" />
         <h5 class="title">Log in to your account!</h5>
         <p class="subtitle">Please provide your staff email and password</p>
 
@@ -80,7 +80,7 @@
         {
             if (await LoginService.TryLoginAsync(loginModel))
             {
-                Navigation.NavigateTo("/counter");
+                Navigation.NavigateTo("/home");
             }
             else
             {

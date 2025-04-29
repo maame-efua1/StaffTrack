@@ -102,12 +102,10 @@ namespace StaffTrack.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -144,12 +142,10 @@ namespace StaffTrack.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -159,7 +155,7 @@ namespace StaffTrack.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("StaffTrack.Models.Department", b =>
+            modelBuilder.Entity("StaffTrackAPI.Models.Department", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -177,7 +173,37 @@ namespace StaffTrack.Migrations
                     b.ToTable("Departments");
                 });
 
-            modelBuilder.Entity("StaffTrack.Models.Report", b =>
+            modelBuilder.Entity("StaffTrackAPI.Models.Notification", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Notifications");
+                });
+
+            modelBuilder.Entity("StaffTrackAPI.Models.Report", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -196,6 +222,11 @@ namespace StaffTrack.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<DateTime>("SubmittedAt")
                         .HasColumnType("datetime2");
 
@@ -213,7 +244,7 @@ namespace StaffTrack.Migrations
                     b.ToTable("Reports");
                 });
 
-            modelBuilder.Entity("StaffTrack.Models.User", b =>
+            modelBuilder.Entity("StaffTrackAPI.Models.User", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -302,7 +333,7 @@ namespace StaffTrack.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("StaffTrack.Models.User", null)
+                    b.HasOne("StaffTrackAPI.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -311,7 +342,7 @@ namespace StaffTrack.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("StaffTrack.Models.User", null)
+                    b.HasOne("StaffTrackAPI.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -326,7 +357,7 @@ namespace StaffTrack.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("StaffTrack.Models.User", null)
+                    b.HasOne("StaffTrackAPI.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -335,16 +366,27 @@ namespace StaffTrack.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("StaffTrack.Models.User", null)
+                    b.HasOne("StaffTrackAPI.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("StaffTrack.Models.Report", b =>
+            modelBuilder.Entity("StaffTrackAPI.Models.Notification", b =>
                 {
-                    b.HasOne("StaffTrack.Models.User", "User")
+                    b.HasOne("StaffTrackAPI.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("StaffTrackAPI.Models.Report", b =>
+                {
+                    b.HasOne("StaffTrackAPI.Models.User", "User")
                         .WithMany("Reports")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -353,9 +395,9 @@ namespace StaffTrack.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("StaffTrack.Models.User", b =>
+            modelBuilder.Entity("StaffTrackAPI.Models.User", b =>
                 {
-                    b.HasOne("StaffTrack.Models.Department", "Department")
+                    b.HasOne("StaffTrackAPI.Models.Department", "Department")
                         .WithMany("Users")
                         .HasForeignKey("DepartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -364,12 +406,12 @@ namespace StaffTrack.Migrations
                     b.Navigation("Department");
                 });
 
-            modelBuilder.Entity("StaffTrack.Models.Department", b =>
+            modelBuilder.Entity("StaffTrackAPI.Models.Department", b =>
                 {
                     b.Navigation("Users");
                 });
 
-            modelBuilder.Entity("StaffTrack.Models.User", b =>
+            modelBuilder.Entity("StaffTrackAPI.Models.User", b =>
                 {
                     b.Navigation("Reports");
                 });

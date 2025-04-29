@@ -1,0 +1,214 @@
+body[b-brfkja4r5q] {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #F4F4F4;
+}
+
+.container[b-brfkja4r5q] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-form[b-brfkja4r5q] {
+    background-color: #FFFFFF;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.logo[b-brfkja4r5q] {
+    height: 80px;
+    margin-bottom: 1.5rem;
+}
+
+.title[b-brfkja4r5q] {
+    color: #2E7D32;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle[b-brfkja4r5q] {
+    color: #6B7280;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group[b-brfkja4r5q] {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+    .form-group label[b-brfkja4r5q] {
+        display: block;
+        color: #2E7D32;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+.input[b-brfkja4r5q] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #2E7D32;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    outline: none;
+}
+
+    .input:focus[b-brfkja4r5q] {
+        border-color: #1B5E20;
+    }
+
+/* Password Input Specific Styles */
+.bg-gray-50\/5[b-brfkja4r5q] {
+    background-color: rgba(249, 250, 251, 0.05);
+}
+
+.py-3[b-brfkja4r5q] {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+
+.w-full[b-brfkja4r5q] {
+    width: 100%;
+}
+
+.rounded-lg[b-brfkja4r5q] {
+    border-radius: 0.5rem;
+}
+
+.border-none[b-brfkja4r5q] {
+    border: none;
+}
+
+.text-sm[b-brfkja4r5q] {
+    font-size: 0.875rem;
+}
+
+.outline-none[b-brfkja4r5q] {
+    outline: none;
+}
+
+.placeholder\:text-sm[b-brfkja4r5q]::placeholder {
+    font-size: 0.875rem;
+}
+
+.placeholder\:text-gray-300[b-brfkja4r5q]::placeholder {
+    color: #D1D5DB;
+}
+
+.focus\:ring-0:focus[b-brfkja4r5q] {
+    box-shadow: none;
+}
+
+.focus\:border-transparent:focus[b-brfkja4r5q] {
+    border-color: transparent;
+}
+
+.password-wrapper[b-brfkja4r5q] {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#password-addon[b-brfkja4r5q] {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #2E7D32;
+    padding: 0 1rem;
+}
+
+.ltr\:rounded-l-none[b-brfkja4r5q] {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.error[b-brfkja4r5q] {
+    color: #EF4444;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* Submit Button Styles */
+.mb-3[b-brfkja4r5q] {
+    margin-bottom: 0.75rem;
+}
+
+.btn[b-brfkja4r5q] {
+    display: block;
+    width: 100%;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.bg-actionPrimary-default[b-brfkja4r5q] {
+    background-color: #2E7D32;
+}
+
+.border-transparent[b-brfkja4r5q] {
+    border: none;
+}
+
+.text-white[b-brfkja4r5q] {
+    color: #FFFFFF;
+}
+
+.block[b-brfkja4r5q] {
+    display: block;
+}
+
+.w-full[b-brfkja4r5q] {
+    width: 100%;
+}
+
+.hover\:bg-actionPrimary-hover:hover[b-brfkja4r5q] {
+    background-color: #1B5E20;
+}
+
+.focus\:ring:focus[b-brfkja4r5q] {
+    outline: none;
+}
+
+.focus\:ring-actionPrimary-active\/30:focus[b-brfkja4r5q] {
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.3);
+}
+
+button:disabled[b-brfkja4r5q] {
+    background-color: #4CAF50;
+    cursor: not-allowed;
+}
+
+.forgot-password[b-brfkja4r5q] {
+    margin-top: 1.5rem;
+    color: #6B7280;
+    font-size: 0.9rem;
+}
+
+    .forgot-password a[b-brfkja4r5q] {
+        color: #2E7D32;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+@media (max-width: 480px) {
+    .login-form[b-brfkja4r5q] {
+        padding: 1.5rem;
+        max-width: 90%;
+    }
+
+    .logo[b-brfkja4r5q] {
+        height: 60px;
+    }
+
+    .title[b-brfkja4r5q] {
+        font-size: 1.25rem;
+    }
+}

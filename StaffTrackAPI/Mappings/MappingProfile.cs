@@ -9,5 +9,6 @@ public class MappingProfile : Profile
         CreateMap<User, UserDTO>().ReverseMap();
         CreateMap<Department, DepartmentDTO>().ReverseMap();
         CreateMap<Report, ReportDTO>().ReverseMap();
+        CreateMap<Notification, NotificationDTO>().ForMember(dest => dest.TimestampFormatted, opt => opt.Ignore()).ReverseMap();
     }
 }

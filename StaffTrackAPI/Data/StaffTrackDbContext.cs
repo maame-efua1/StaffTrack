@@ -13,6 +13,7 @@ namespace StaffTrackAPI.Data
 
         public DbSet<Department> Departments { get; set; }
         public DbSet<Report> Reports { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)

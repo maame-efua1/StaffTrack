@@ -30,5 +30,9 @@ namespace StaffTrackAPI.Models
         public string FilePath { get; set; }
 
         public DateTime SubmittedAt { get; set; } = DateTime.UtcNow;
+
+        [Required]
+        [StringLength(50)]
+        public string Status { get; set; } = "Pending"; // New field for status
     }
 }

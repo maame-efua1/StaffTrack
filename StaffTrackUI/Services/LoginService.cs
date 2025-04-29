@@ -57,7 +57,7 @@ public class LoginService
         if (jwtToken != null)
         {
             var userId = jwtToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-            var fullName = jwtToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
+            var fullName = jwtToken.Claims.FirstOrDefault(x => x.Type == "FullName")?.Value;
 
             CurrentUser = new UserDTO
             {

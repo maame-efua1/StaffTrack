@@ -33,6 +33,10 @@
       "PackagePath": "staticwebassets\\index.html"
     },
     {
+      "Id": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\wwwroot\\logo.png",
+      "PackagePath": "staticwebassets\\logo.png"
+    },
+    {
       "Id": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\wwwroot\\sample-data\\weather.json",
       "PackagePath": "staticwebassets\\sample-data\\weather.json"
     },

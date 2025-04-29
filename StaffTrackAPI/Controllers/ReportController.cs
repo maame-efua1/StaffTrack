@@ -27,8 +27,23 @@ namespace StaffTrackAPI.Controllers
             if (reports == null || !reports.Any())
                 return NotFound(new { Message = "No reports found." });
 
-            var reportDtos = _mapper.Map<IEnumerable<ReportDTO>>(reports);  
+            var reportDtos = _mapper.Map<IEnumerable<ReportDTO>>(reports);
             return Ok(new { Message = "Reports retrieved successfully.", Data = reportDtos });
+        }
+
+        [HttpGet("recent")]
+        public async Task<ActionResult<IEnumerable<ReportDTO>>> GetRecent()
+        {
+            var reports = await _context.Reports
+                .OrderByDescending(r => r.SubmittedAt)
+                .Take(5) // Limit to 5 recent reports
+                .ToListAsync();
+
+            if (reports == null || !reports.Any())
+                return NotFound(new { Message = "No recent reports found." });
+
+            var reportDtos = _mapper.Map<IEnumerable<ReportDTO>>(reports);
+            return Ok(new { Message = "Recent reports retrieved successfully.", Data = reportDtos });
         }
 
         [HttpGet("{id}")]
@@ -41,6 +56,33 @@ namespace StaffTrackAPI.Controllers
 
             var reportDto = _mapper.Map<ReportDTO>(report);
             return Ok(new { Message = "Report retrieved successfully.", Data = reportDto });
+        }
+
+        [HttpGet("user/{userId}")]
+        public async Task<ActionResult<IEnumerable<ReportDTO>>> GetByUser(string userId)
+        {
+            var reports = await _context.Reports
+                .Where(r => r.UserId == userId)
+                .ToListAsync();
+
+            if (reports == null || !reports.Any())
+                return NotFound(new { Message = "No reports found for this user." });
+
+            var reportDtos = _mapper.Map<IEnumerable<ReportDTO>>(reports);
+            return Ok(new { Message = "User reports retrieved successfully.", Data = reportDtos });
+        }
+
+        [HttpPut("approve/{id}")]
+        public async Task<IActionResult> Approve(int id)
+        {
+            var report = await _context.Reports.FindAsync(id);
+            if (report == null)
+                return NotFound(new { Message = "Report not found." });
+
+            report.Status = "Approved";
+            await _context.SaveChangesAsync();
+
+            return Ok(new { Message = "Report approved successfully." });
         }
 
         [HttpPost("add")]
@@ -75,7 +117,7 @@ namespace StaffTrackAPI.Controllers
                     throw;
             }
 
-            return Ok(new { Message = "Report updated successfully." });  
+            return Ok(new { Message = "Report updated successfully." });
         }
 
         [HttpDelete("delete/{id}")]
@@ -88,7 +130,7 @@ namespace StaffTrackAPI.Controllers
             _context.Reports.Remove(report);
             await _context.SaveChangesAsync();
 
-            return Ok(new { Message = "Report deleted successfully." });  
+            return Ok(new { Message = "Report deleted successfully." });
         }
 
         private bool ReportExists(int id)

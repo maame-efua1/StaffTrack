@@ -18,6 +18,7 @@ builder.Services.AddScoped(sp => new HttpClient
 // Register services
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<LoginService>();
+builder.Services.AddScoped<DashboardService>();
 
 
 

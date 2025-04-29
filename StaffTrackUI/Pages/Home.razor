@@ -1,7 +1,297 @@
-﻿@page "/"
+﻿@page "/home"
+@layout EmptyLayout
+@using StaffTrackShared.DTOs
+@using StaffTrackUI.Services
+@inject NavigationManager Navigation
+@inject DashboardService DashboardService
+@inject LoginService LoginService
+@implements IDisposable
 
-<PageTitle>Home</PageTitle>
+<PageTitle>StaffTrack - Dashboard</PageTitle>
 
-<h1>Hello, world!</h1>
+<!-- Header -->
+<header class="header bg-white shadow-md fixed top-0 w-full z-10">
+    <div class="header-content max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+        <div class="logo">
+            <img src="/logo.png" alt="StaffTrack Logo" />
+            <h3 class="text-actionPrimary-default font-semibold text-xl">StaffTrack</h3>
+        </div>
+        <div class="user-profile flex items-center gap-3">
+            @{
+                var avatarInitial = LoginService.CurrentUser?.FullName?.FirstOrDefault() ?? 'A';
+                var userName = LoginService.CurrentUser?.FullName ?? "User";
+            }
+            <div class="notifications relative">
+                <button class="notification-btn text-actionPrimary-default text-xl" @onclick="ToggleNotifications">
+                    <i class="mdi mdi-bell-outline"></i>
+                    @if (UnreadNotifications > 0)
+                    {
+                        <span class="notification-badge bg-red-500 text-white text-xs rounded-full px-2 py-1 absolute -top-1 -right-1">@UnreadNotifications</span>
+                    }
+                </button>
+                @if (IsNotificationOpen)
+                {
+                    <div class="notification-dropdown absolute right-0 mt-2 bg-white rounded-lg shadow-lg w-64 animate-slide-down">
+                        @if (Notifications.Any())
+                        {
+                            @foreach (var notification in Notifications)
+                            {
+                                var itemClass = notification.IsRead ? "bg-gray-50/5" : "bg-white";
+                                var messageClass = notification.IsRead ? "text-actionPrimary-default" : "text-gray-800";
+                                <div class="notification-item px-4 py-2 border-b border-gray-200 @itemClass">
+                                    <p class="notification-message text-sm @messageClass">@notification.Message</p>
+                                    <span class="notification-timestamp text-xs text-gray-500">@notification.Timestamp</span>
+                                </div>
+                            }
+                            <button class="mark-all-read w-full bg-actionPrimary-default text-white py-2 rounded-b-lg hover:bg-actionPrimary-hover" @onclick="MarkAllAsRead">Mark All as Read</button>
+                        }
+                        else
+                        {
+                            <p class="no-notifications px-4 py-2 text-sm text-gray-500">No notifications</p>
+                        }
+                    </div>
+                }
+            </div>
+            <div class="avatar bg-actionPrimary-default text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-semibold">
+                @avatarInitial
+            </div>
+            <span class="user-name text-sm text-gray-800">Welcome, @userName!</span>
+            <button class="logout-btn border border-actionPrimary-default text-actionPrimary-default px-3 py-1 rounded hover:bg-actionPrimary-default hover:text-white" @onclick="HandleLogout">Logout</button>
+        </div>
+    </div>
+</header>
 
-Welcome to your new app.
+<!-- Navigation -->
+<nav class="nav-bar bg-white shadow-md mt-16">
+    <div class="nav-content max-w-6xl mx-auto px-4 py-3">
+        @{
+            var iconClass = IsMobileMenuOpen ? "mdi-close" : "mdi-menu";
+            var navLinksClass = IsMobileMenuOpen ? "flex-col mt-2 md:flex-row md:mt-0 md:flex" : "hidden md:flex";
+        }
+        <button class="hamburger text-actionPrimary-default text-xl md:hidden" @onclick="ToggleMobileMenu">
+            <i class="mdi @iconClass"></i>
+        </button>
+        <ul class="nav-links flex gap-6 @navLinksClass">
+            <li><a class="nav-link text-gray-800 font-medium hover:text-actionPrimary-default hover:underline underline-offset-4 active">Dashboard</a></li>
+            <li><a class="nav-link text-gray-800 font-medium hover:text-actionPrimary-default hover:underline underline-offset-4" href="/submit-report">Submitting Report</a></li>
+            <li><a class="nav-link text-gray-800 font-medium hover:text-actionPrimary-default hover:underline underline-offset-4" href="/view-reports">View Reports</a></li>
+            <li><a class="nav-link text-gray-800 font-medium hover:text-actionPrimary-default hover:underline underline-offset-4" href="/settings">Settings</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="dashboard-container max-w-6xl mx-auto px-4 py-6 mt-28">
+    @if (IsLoading)
+    {
+        <div class="loading text-center text-actionPrimary-default text-lg py-6">Loading...</div>
+    }
+    else if (!string.IsNullOrEmpty(ErrorMessage))
+    {
+        <div class="error text-center text-red-500 text-lg py-6" role="alert">@ErrorMessage</div>
+    }
+    else
+    {
+        <!-- Hero Section -->
+        <div class="hero-section mb-6">
+            <div class="hero-card bg-white rounded-lg shadow-md flex items-center p-6 gap-6">
+                <div class="hero-text flex-1">
+                    <h1 class="hero-title text-actionPrimary-default text-2xl font-semibold animate-fade-in">Hi, @userName! Let’s Get to Work.</h1>
+                    <p class="hero-subtitle text-gray-500 text-sm mt-2 animate-fade-in">Submit your weekly report in just a few clicks.</p>
+                </div>
+                <div class="hero-illustration">
+                    <i class="mdi mdi-clipboard-check text-actionPrimary-default text-6xl animate-bounce"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            @{
+                var actionCardClasses = "action-card bg-white border border-gray-200 rounded-lg p-6 text-center cursor-pointer hover:border-actionPrimary-default hover:-translate-y-1 transition-all relative";
+                var lastReportDate = RecentReports.Any() ? RecentReports.First().SubmissionDate : "N/A";
+            }
+            <div class="@actionCardClasses" @onclick="NavigateToSubmitReport">
+                <i class="mdi mdi-plus text-actionPrimary-default text-3xl mb-2"></i>
+                <h3 class="action-title text-gray-800 font-medium text-lg">Submit New Report</h3>
+            </div>
+            <div class="@actionCardClasses" @onclick="NavigateToViewReports">
+                <i class="mdi mdi-file-document text-actionPrimary-default text-3xl mb-2"></i>
+                <h3 class="action-title text-gray-800 font-medium text-lg">View Last Report</h3>
+                <p class="action-subtitle text-gray-500 text-sm mt-1">Submitted: @lastReportDate</p>
+            </div>
+            <div class="@actionCardClasses">
+                <i class="mdi mdi-alert-circle text-actionPrimary-default text-3xl mb-2"></i>
+                <h3 class="action-title text-gray-800 font-medium text-lg">Pending Actions</h3>
+                <span class="badge bg-red-500 text-white text-xs rounded-full px-2 py-1 absolute top-4 right-4">@PendingActions</span>
+            </div>
+        </div>
+
+        <!-- Recent Reports -->
+        <div class="recent-reports mb-6">
+            <h2 class="section-title text-actionPrimary-default text-xl font-semibold mb-4">Recent Reports</h2>
+            <div class="reports-table bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="table-header grid grid-cols-4 p-4 bg-gray-50/5 font-semibold text-gray-500">
+                    <span class="table-column">Report Title</span>
+                    <span class="table-column">Submission Date</span>
+                    <span class="table-column">Status</span>
+                    <span class="table-column">Actions</span>
+                </div>
+                @if (RecentReports.Any())
+                {
+                    @foreach (var report in RecentReports)
+                    {
+                        var statusClass = report.Status == "Approved" ? "text-actionPrimary-default" : "text-yellow-500";
+                        <div class="table-row grid grid-cols-4 p-4 border-b border-gray-200 hover:bg-actionPrimary-default/10">
+                            <span class="table-column text-sm text-gray-800">@report.Title</span>
+                            <span class="table-column text-sm text-gray-800">@report.SubmissionDate</span>
+                            <span class="table-column text-sm @statusClass">@report.Status</span>
+                            <span class="table-column">
+                                <button class="action-btn bg-actionPrimary-default text-white px-3 py-1 rounded hover:bg-actionPrimary-hover hover:scale-105 transition-all">View</button>
+                            </span>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="no-data text-center text-gray-500 text-sm p-4">No recent reports available.</div>
+                }
+            </div>
+            <a href="/view-reports" class="see-all text-actionPrimary-default text-sm font-medium float-right mt-2">See All Reports</a>
+        </div>
+
+        <!-- Progress Widget -->
+        <div class="progress-widget mb-6">
+            <h2 class="section-title text-actionPrimary-default text-xl font-semibold mb-4">Progress Overview</h2>
+            <div class="progress-card bg-white border border-actionPrimary-default rounded-lg p-6 text-center">
+                @{
+                    var strokeDashOffset = 251.2 * (1 - Progress.Percentage / 100); /* Adjusted for new radius (2 * π * 40) */
+                }
+                <svg class="progress-ring relative mx-auto" width="100" height="100">
+                    <circle class="progress-ring-circle" cx="50" cy="50" r="40" />
+                    <circle class="progress-ring-fill animate-fill-progress" cx="50" cy="50" r="40" style="stroke-dashoffset: @strokeDashOffset;" />
+                    <text x="50" y="55" class="progress-text text-actionPrimary-default font-semibold text-lg">@Progress.Percentage%</text>
+                </svg>
+                <p class="progress-subtitle text-gray-500 text-sm mt-2">@Progress.ReportCount</p>
+                <div class="streak flex justify-center items-center gap-2 mt-4">
+                    <span class="streak-text text-gray-800 text-sm">@Progress.Streak</span>
+                    <span class="streak-emoji text-lg">🔥</span>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<!-- Footer -->
+<footer class="footer bg-actionPrimary-default fixed bottom-0 w-full py-3">
+    <div class="footer-content max-w-6xl mx-auto px-4 flex justify-between items-center">
+        <div class="footer-logo">
+            <img src="/logo.png" alt="StaffTrack Logo" />
+            <h3 class="text-white font-semibold text-base">StaffTrack</h3>
+        </div>
+        <div class="footer-links flex items-center gap-3">
+            <p class="footer-copyright text-white/80 text-sm">© 2025 StaffTrack</p>
+            <a href="#" class="footer-link text-white/80 text-sm hover:text-white">Privacy Policy</a>
+            <a href="#" class="footer-link text-white/80 text-sm hover:text-white">Support</a>
+        </div>
+    </div>
+</footer>
+
+@code {
+    private bool IsMobileMenuOpen { get; set; }
+    private bool IsNotificationOpen { get; set; }
+    private bool IsLoading { get; set; }
+    private string? ErrorMessage { get; set; }
+    private List<ReportDTO> RecentReports { get; set; } = new();
+    private ProgressDTO Progress { get; set; } = new();
+    private List<NotificationDTO> Notifications { get; set; } = new();
+    private int UnreadNotifications { get; set; }
+    private int PendingActions { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Subscribe to user changes
+        LoginService.OnUserChanged += StateHasChanged;
+
+        // Load user from local storage if not already loaded
+        if (LoginService.CurrentUser == null)
+        {
+            await LoginService.LoadUserFromLocalStorageAsync();
+        }
+
+        // Redirect to login if not authenticated
+        if (!LoginService.IsAuthenticated())
+        {
+            Navigation.NavigateTo("/");
+            return;
+        }
+
+        IsLoading = true;
+        try
+        {
+            var reportsTask = DashboardService.GetRecentReportsAsync();
+            var progressTask = DashboardService.GetProgressAsync();
+            var notificationsTask = DashboardService.GetNotificationsAsync();
+
+            await Task.WhenAll(reportsTask, progressTask, notificationsTask);
+
+            RecentReports = await reportsTask;
+            Progress = await progressTask;
+            Notifications = await notificationsTask;
+
+            UnreadNotifications = Notifications.Count(n => !n.IsRead);
+            PendingActions = RecentReports.Count(r => r.Status == "Pending");
+        }
+        catch
+        {
+            ErrorMessage = "Failed to load dashboard data. Please try again.";
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+
+    private void ToggleMobileMenu()
+    {
+        IsMobileMenuOpen = !IsMobileMenuOpen;
+    }
+
+    private void ToggleNotifications()
+    {
+        IsNotificationOpen = !IsNotificationOpen;
+    }
+
+    private async Task MarkAllAsRead()
+    {
+        if (await DashboardService.MarkAllNotificationsAsReadAsync())
+        {
+            foreach (var notification in Notifications)
+            {
+                notification.IsRead = true;
+            }
+            UnreadNotifications = 0;
+        }
+    }
+
+    private async Task HandleLogout()
+    {
+        await LoginService.LogoutAsync();
+        Navigation.NavigateTo("/");
+    }
+
+    private void NavigateToSubmitReport()
+    {
+        Navigation.NavigateTo("/submit-report");
+    }
+
+    private void NavigateToViewReports()
+    {
+        Navigation.NavigateTo("/view-reports");
+    }
+
+    public void Dispose()
+    {
+        LoginService.OnUserChanged -= StateHasChanged;
+    }
+}
