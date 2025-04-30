@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StaffTrackShared")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7c0885fccc3fc8173e4100b5a7b253eb0c003d3f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+28ae5af723df6c75249297b51f7c16fa66ce14ad")]
 [assembly: System.Reflection.AssemblyProductAttribute("StaffTrackShared")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StaffTrackShared")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

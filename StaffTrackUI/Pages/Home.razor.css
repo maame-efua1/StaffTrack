@@ -357,7 +357,7 @@
 }
 
 .table-header {
-    background-color: #F9FAFB;
+    background-color: #E5E7EB;
     font-weight: 600;
     color: #6B7280;
 }
@@ -411,48 +411,26 @@
     float: right;
 }
 
+
 /* Progress Widget */
 .progress-widget {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .progress-card {
     background-color: #FFFFFF;
     border: 1px solid #2E7D32;
     border-radius: 8px;
-    padding: 1.25rem; /* Reduced from 1.5rem for compactness */
-    text-align: center;
-}
-
-.progress-ring {
-    position: relative;
-}
-
-.progress-ring-circle {
-    fill: none;
-    stroke: #E5E7EB;
-    stroke-width: 8; /* Reduced from 10 */
+    padding: 1.25rem;
 }
 
 .progress-ring-fill {
-    fill: none;
-    stroke: #2E7D32;
-    stroke-width: 8;
-    stroke-dasharray: 251.2; /* Adjusted for radius 40 (2 * π * 40) */
-    animation: fillProgress 2s ease-in-out forwards;
+    transition: stroke-dashoffset 1s ease-in-out;
 }
 
 .progress-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.progress-percentage {
-    color: #2E7D32;
-    font-size: 1rem; /* Reduced from 1.5rem for smaller circle */
-    font-weight: 600;
+    fill: #2E7D32;
+    text-anchor: middle;
 }
 
 .progress-subtitle {
@@ -462,11 +440,7 @@
 }
 
 .streak {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     gap: 0.5rem;
-    margin-top: 1rem;
 }
 
 .streak-text {
@@ -474,9 +448,6 @@
     font-size: 1rem;
 }
 
-.streak-emoji {
-    font-size: 1.2rem;
-}
 
 /* Footer */
 .footer {

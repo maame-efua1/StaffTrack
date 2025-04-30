@@ -43,7 +43,7 @@ namespace StaffTrackAPI.Controllers
                 return NotFound(new { Message = "No recent reports found." });
 
             var reportDtos = _mapper.Map<IEnumerable<ReportDTO>>(reports);
-            return Ok(new { Message = "Recent reports retrieved successfully.", Data = reportDtos });
+            return Ok(reportDtos);
         }
 
         [HttpGet("{id}")]
@@ -96,7 +96,42 @@ namespace StaffTrackAPI.Controllers
             return CreatedAtAction(nameof(GetById), new { id = report.Id }, new { Message = "Report created successfully.", Data = createdReportDto });
         }
 
-        [HttpPut("update/{id}")]
+        [HttpPost("addbulk")]
+        public async Task<IActionResult> CreateReports([FromBody] List<ReportDTO> reports)
+        {
+            if (reports == null || !reports.Any())
+            {
+                return BadRequest("No reports provided.");
+            }
+
+            try
+            {
+                // Map DTOs to entities
+                var reportEntities = reports.Select(dto => new Report
+                {
+                    Id = dto.Id, // Will be ignored if Id is 0 (auto-incremented by database)
+                    UserId = dto.UserId,
+                    StartDate = dto.StartDate,
+                    EndDate = dto.EndDate,
+                    WeekNumber = dto.WeekNumber,
+                    FilePath = dto.FilePath,
+                    SubmittedAt = dto.SubmittedAt,
+                    Status = dto.Status
+                }).ToList();
+
+                // Add reports to the database
+                _context.Reports.AddRange(reportEntities);
+                await _context.SaveChangesAsync();
+
+                return Ok(new { Message = "Reports added successfully." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred while saving reports: {ex.Message}");
+            }
+        }
+
+            [HttpPut("update/{id}")]
         public async Task<IActionResult> Update(int id, ReportDTO reportDto)
         {
             if (id != reportDto.Id)

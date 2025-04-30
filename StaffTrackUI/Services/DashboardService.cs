@@ -15,7 +15,7 @@ public class DashboardService
 
     public async Task<List<ReportDTO>> GetRecentReportsAsync()
     {
-        var response = await _httpClient.GetAsync("api/reports/recent");
+        var response = await _httpClient.GetAsync("report/recent");
         if (response.IsSuccessStatusCode)
         {
             return await response.Content.ReadFromJsonAsync<List<ReportDTO>>() ?? new List<ReportDTO>();
@@ -25,7 +25,7 @@ public class DashboardService
 
     public async Task<ProgressDTO> GetProgressAsync()
     {
-        var response = await _httpClient.GetAsync("api/progress");
+        var response = await _httpClient.GetAsync("progress");
         if (response.IsSuccessStatusCode)
         {
             return await response.Content.ReadFromJsonAsync<ProgressDTO>()
@@ -36,7 +36,7 @@ public class DashboardService
 
     public async Task<List<NotificationDTO>> GetNotificationsAsync()
     {
-        var response = await _httpClient.GetAsync("api/notifications");
+        var response = await _httpClient.GetAsync("notification");
         if (response.IsSuccessStatusCode)
         {
             return await response.Content.ReadFromJsonAsync<List<NotificationDTO>>() ?? new List<NotificationDTO>();
@@ -46,7 +46,20 @@ public class DashboardService
 
     public async Task<bool> MarkAllNotificationsAsReadAsync()
     {
-        var response = await _httpClient.PostAsync("api/notifications/mark-all-read", null);
+        var response = await _httpClient.PostAsync("notification/mark-all-read", null);
         return response.IsSuccessStatusCode;
+    }
+
+    public async Task<bool> AddReportsAsync(List<ReportDTO> reports)
+    {
+        try
+        {
+            var response = await _httpClient.PostAsJsonAsync("report/addbulk", reports);
+            return response.IsSuccessStatusCode;
+        }
+        catch
+        {
+            return false;
+        }
     }
 }

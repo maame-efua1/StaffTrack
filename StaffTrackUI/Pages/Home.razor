@@ -165,11 +165,12 @@
             <h2 class="section-title text-actionPrimary-default text-xl font-semibold mb-4">Progress Overview</h2>
             <div class="progress-card bg-white border border-actionPrimary-default rounded-lg p-6 text-center">
                 @{
-                    var strokeDashOffset = 251.2 * (1 - Progress.Percentage / 100); /* Adjusted for new radius (2 * π * 40) */
+                    var circumference = 2 * Math.PI * 40; // Circumference for radius 40
+                    var strokeDashOffset = circumference * (1 - Progress.Percentage / 100);
                 }
                 <svg class="progress-ring relative mx-auto" width="100" height="100">
-                    <circle class="progress-ring-circle" cx="50" cy="50" r="40" />
-                    <circle class="progress-ring-fill animate-fill-progress" cx="50" cy="50" r="40" style="stroke-dashoffset: @strokeDashOffset;" />
+                    <circle class="progress-ring-circle" cx="50" cy="50" r="40" stroke-width="8" fill="none" stroke="#E5E7EB" />
+                    <circle class="progress-ring-fill" cx="50" cy="50" r="40" stroke-width="8" fill="none" stroke="#2E7D32" stroke-dasharray="@circumference" stroke-dashoffset="@strokeDashOffset" transform="rotate(-90 50 50)" />
                     <text x="50" y="55" class="progress-text text-actionPrimary-default font-semibold text-lg">@Progress.Percentage%</text>
                 </svg>
                 <p class="progress-subtitle text-gray-500 text-sm mt-2">@Progress.ReportCount</p>
@@ -282,7 +283,7 @@
 
     private void NavigateToSubmitReport()
     {
-        Navigation.NavigateTo("/submit-report");
+        Navigation.NavigateTo("/submit-reports");
     }
 
     private void NavigateToViewReports()

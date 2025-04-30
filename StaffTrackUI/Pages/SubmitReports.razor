@@ -1,0 +1,157 @@
+﻿@page "/submit-reports"
+@layout MainLayout
+@using StaffTrackShared.DTOs
+@using StaffTrackUI.Services
+@inject NavigationManager Navigation
+@inject DashboardService DashboardService
+@inject LoginService LoginService
+@implements IDisposable
+
+
+<PageTitle>StaffTrack - Submit Reports</PageTitle>
+
+<div class="container max-w-6xl mx-auto px-4 py-6 mt-28">
+    @if (!LoginService.IsAuthenticated())
+    {
+        <div class="error text-center text-red-500 text-lg py-6" role="alert">
+            Please log in to submit reports.
+        </div>
+    }
+    else if (IsLoading)
+    {
+        <div class="loading text-center text-actionPrimary-default text-lg py-6">Submitting...</div>
+    }
+    else if (!string.IsNullOrEmpty(ErrorMessage))
+    {
+        <div class="error text-center text-red-500 text-lg py-6" role="alert">@ErrorMessage</div>
+    }
+    else
+    {
+        <h1 class="text-actionPrimary-default text-2xl font-semibold mb-6">Submit Multiple Reports</h1>
+        <form @onsubmit="HandleSubmitReports">
+            @for (int i = 0; i < Reports.Count; i++)
+            {
+                var report = Reports[i];
+                <div class="report-entry bg-white rounded-lg shadow-md p-6 mb-4">
+                    <h3 class="text-actionPrimary-default text-lg font-medium mb-4">Report @(i + 1)</h3>
+                    <div class="form-group mb-4">
+                        <label class="block text-actionPrimary-default font-medium mb-2">Start Date</label>
+                        <input @bind="report.StartDate" type="datetime-local" class="input w-full" />
+                    </div>
+                    <div class="form-group mb-4">
+                        <label class="block text-actionPrimary-default font-medium mb-2">End Date</label>
+                        <input @bind="report.EndDate" type="datetime-local" class="input w-full" />
+                    </div>
+                    <div class="form-group mb-4">
+                        <label class="block text-actionPrimary-default font-medium mb-2">Week Number</label>
+                        <input @bind="report.WeekNumber" type="number" class="input w-full" />
+                    </div>
+                    <div class="form-group mb-4">
+                        <label class="block text-actionPrimary-default font-medium mb-2">File Path</label>
+                        <input @bind="report.FilePath" type="text" class="input w-full" placeholder="e.g., /reports/week17.pdf" />
+                    </div>
+                    <div class="form-group mb-4">
+                        <label class="block text-actionPrimary-default font-medium mb-2">Status</label>
+                        <select @bind="report.Status" class="input w-full">
+                            <option value="Pending">Pending</option>
+                            <option value="Approved">Approved</option>
+                            <option value="Rejected">Rejected</option>
+                        </select>
+                    </div>
+                    <button type="button" @onclick="() => RemoveReport(i)" class="btn bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600">
+                        Remove Report
+                    </button>
+                </div>
+            }
+            <div class="flex gap-4 mb-6">
+                <button type="button" @onclick="AddNewReport" class="btn bg-actionPrimary-default text-white py-2 px-4 rounded hover:bg-actionPrimary-hover">
+                    Add Another Report
+                </button>
+                <button type="submit" class="btn bg-actionPrimary-default text-white py-2 px-4 rounded hover:bg-actionPrimary-hover">
+                    Submit All Reports
+                </button>
+            </div>
+        </form>
+    }
+</div>
+
+@code {
+    private List<ReportDTO> Reports { get; set; } = new();
+    private bool IsLoading { get; set; }
+    private string? ErrorMessage { get; set; }
+    private readonly string userId = "7f61f868-b23d-41ca-8d14-c7ff5a6b8a19";
+
+    protected override void OnInitialized()
+    {
+        // Subscribe to user changes
+        LoginService.OnUserChanged += StateHasChanged;
+
+        // Redirect to login if not authenticated
+        if (!LoginService.IsAuthenticated())
+        {
+            Navigation.NavigateTo("/");
+            return;
+        }
+
+        // Initialize with one report
+        AddNewReport();
+    }
+
+    private void AddNewReport()
+    {
+        Reports.Add(new ReportDTO
+            {
+                UserId = userId,
+                StartDate = DateTime.UtcNow,
+                EndDate = DateTime.UtcNow,
+                WeekNumber = 0,
+                FilePath = "/reports/default.pdf",
+                SubmittedAt = DateTime.UtcNow,
+                Status = "Pending"
+            });
+    }
+
+    private void RemoveReport(int index)
+    {
+        if (Reports.Count > 1)
+        {
+            Reports.RemoveAt(index);
+        }
+    }
+
+    private async Task HandleSubmitReports()
+    {
+        if (!Reports.Any())
+        {
+            ErrorMessage = "Please add at least one report.";
+            return;
+        }
+
+        IsLoading = true;
+        ErrorMessage = null;
+        try
+        {
+            if (await DashboardService.AddReportsAsync(Reports))
+            {
+                Navigation.NavigateTo("/dashboard");
+            }
+            else
+            {
+                ErrorMessage = "Failed to submit reports. Please try again.";
+            }
+        }
+        catch
+        {
+            ErrorMessage = "An error occurred while submitting reports.";
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+
+    public void Dispose()
+    {
+        LoginService.OnUserChanged -= StateHasChanged;
+    }
+}

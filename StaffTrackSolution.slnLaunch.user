@@ -11,5 +11,18 @@
         "Action": "StartWithoutDebugging"
       }
     ]
+  },
+  {
+    "Name": "New Profile (1)",
+    "Projects": [
+      {
+        "Path": "StaffTrackAPI\\StaffTrackAPI.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "StaffTrackUI\\StaffTrackUI.csproj",
+        "Action": "Start"
+      }
+    ]
   }
 ]

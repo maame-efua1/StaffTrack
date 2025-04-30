@@ -14,6 +14,11 @@ namespace StaffTrackAPI.Models
         [ForeignKey(nameof(UserId))]
         public User User { get; set; }
 
+        public string FromUserId { get; set; } 
+
+        [ForeignKey(nameof(FromUserId))]
+        public User FromUser { get; set; } 
+
         [Required]
         [StringLength(500)]
         public string Message { get; set; }
@@ -21,5 +26,6 @@ namespace StaffTrackAPI.Models
         public DateTime Timestamp { get; set; } = DateTime.UtcNow;
 
         public bool IsRead { get; set; } = false;
+
     }
 }

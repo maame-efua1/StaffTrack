@@ -174,7 +174,7 @@
   },
   {
     "ContainingType": "StaffTrackAPI.Controllers.NotificationController",
-    "Method": "GetNotifications",
+    "Method": "GetAll",
     "RelativePath": "api/Notification",
     "HttpMethod": "GET",
     "IsController": true,
@@ -194,13 +194,61 @@
   },
   {
     "ContainingType": "StaffTrackAPI.Controllers.NotificationController",
+    "Method": "CreateNotification",
+    "RelativePath": "api/Notification",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "notificationDto",
+        "Type": "StaffTrackShared.DTOs.NotificationDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StaffTrackAPI.Controllers.NotificationController",
     "Method": "MarkAllAsRead",
     "RelativePath": "api/Notification/mark-all-read",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StaffTrackAPI.Controllers.NotificationController",
+    "Method": "GetNotifications",
+    "RelativePath": "api/Notification/user/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[StaffTrackShared.DTOs.NotificationDTO, StaffTrackShared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "StaffTrackAPI.Controllers.ProgressController",
@@ -293,6 +341,22 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "StaffTrackAPI.Controllers.ReportController",
+    "Method": "CreateReports",
+    "RelativePath": "api/Report/addbulk",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "reports",
+        "Type": "System.Collections.Generic.List\u00601[[StaffTrackShared.DTOs.ReportDTO, StaffTrackShared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "StaffTrackAPI.Controllers.ReportController",
