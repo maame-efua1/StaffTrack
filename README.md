@@ -19,7 +19,7 @@
 ## Getting Started
 
 1. Clone the repo  
-   `git clone https://github.com/your-username/StaffTrack.git`
+   `git clone https://github.com/maame-efua1/StaffTrack.git`
 
 2. Update `appsettings.json` with your database connection string.
 
