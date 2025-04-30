@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "GIyv6JcwoVNbLtQL6sFOYceAHmWIeTNPZun6KsbfQ5k=",
+  "Hash": "VFXw+QtQ7vnxNuGuhRDBz9qqFPLyCQGLxd8aqVMDWmQ=",
   "Source": "StaffTrackUI",
   "BasePath": "/",
   "Mode": "Root",
@@ -31,8 +31,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "manifest",
-      "Fingerprint": "xbg6s7lrhy",
-      "Integrity": "0z9NQ7xfDj31zFcOBufvbI0ckC01Bi7riWa9kxLz0eU=",
+      "Fingerprint": "26z72hi2io",
+      "Integrity": "ynPLiMxQEOEAu0k+NYJ8SCPDgZjx1AVABvaw/C/kJhk=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "obj\\Debug\\net8.0\\blazor.boot.json"
@@ -1228,8 +1228,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "symbol",
-      "Fingerprint": "2ouqs7azsf",
-      "Integrity": "Pmpjrf8/UfHySaIAcs6TN7nQpgLBJzFHTnKCt0zkqXM=",
+      "Fingerprint": "oyzplxbrgt",
+      "Integrity": "sLT5m6vT+Lm4QuVdB3tUujt19hAil5H3uTVBd+PVY2w=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "obj\\Debug\\net8.0\\StaffTrackUI.pdb"
@@ -1249,8 +1249,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "runtime",
-      "Fingerprint": "9lbvy2lpgg",
-      "Integrity": "k3nMD4uhZkKrneFiHsGXoEq1zXPQS7dSW5LdWZUR+80=",
+      "Fingerprint": "q3egu1d9tv",
+      "Integrity": "Zj1kqq9x3pZtBDDoVD55FOB/q1bmznYZsRLY7qFkVPw=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\obj\\Debug\\net8.0\\webcil\\StaffTrackUI.wasm"
@@ -7745,7 +7745,7 @@
       "OriginalItemSpec": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Threading.Tasks.wasm"
     },
     {
-      "Identity": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\obj\\Debug\\net8.0\\compressed\\n3po9h39sb-xbg6s7lrhy.gz",
+      "Identity": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\obj\\Debug\\net8.0\\compressed\\n3po9h39sb-26z72hi2io.gz",
       "SourceId": "StaffTrackUI",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\obj\\Debug\\net8.0\\compressed\\",
@@ -7759,8 +7759,8 @@
       "RelatedAsset": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.boot.json",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "bps0nb7tn6",
-      "Integrity": "sTt30QIffvi0dEQmh/lcocTTUVpYf/evijn+K4J1vHw=",
+      "Fingerprint": "x30ogh4dhm",
+      "Integrity": "jYqOSwHNqQYd6xlDnaPaJeOgr2otb+ce3hu4yvfmyM4=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.boot.json"
@@ -8102,7 +8102,7 @@
       "OriginalItemSpec": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.ComponentModel.Annotations.wasm"
     },
     {
-      "Identity": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\obj\\Debug\\net8.0\\compressed\\pbz28nxy0i-2ouqs7azsf.gz",
+      "Identity": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\obj\\Debug\\net8.0\\compressed\\pbz28nxy0i-oyzplxbrgt.gz",
       "SourceId": "StaffTrackUI",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\obj\\Debug\\net8.0\\compressed\\",
@@ -8116,8 +8116,8 @@
       "RelatedAsset": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\StaffTrackUI.pdb",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "3e1b3l0rn3",
-      "Integrity": "NQ14vLbpjUjKQVxPaAes6ZoVlfgV0vt0aUNp9SLL864=",
+      "Fingerprint": "x07s86rd5s",
+      "Integrity": "bx1KV8j/jTT8TJbKleILv+lfEBwKCd4KxJBZ3aIEsf0=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\StaffTrackUI.pdb"
@@ -8963,7 +8963,7 @@
       "OriginalItemSpec": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.Extensions.FileSystemGlobbing.wasm"
     },
     {
-      "Identity": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\obj\\Debug\\net8.0\\compressed\\xlgf776m75-9lbvy2lpgg.gz",
+      "Identity": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\obj\\Debug\\net8.0\\compressed\\xlgf776m75-q3egu1d9tv.gz",
       "SourceId": "StaffTrackUI",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\obj\\Debug\\net8.0\\compressed\\",
@@ -8977,8 +8977,8 @@
       "RelatedAsset": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\StaffTrackUI.wasm",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "0vc5mtg7zm",
-      "Integrity": "pAX0pZKV0fmMNXfxZ9I/FJQFh6vxg9+5aL8cI+YQxeM=",
+      "Fingerprint": "vtgpnoybnr",
+      "Integrity": "c9jexml+PBRA9xRT+fXKR3BvYva00Rzbm/ZyLTexurU=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\bin\\Debug\\net8.0\\wwwroot\\_framework\\StaffTrackUI.wasm"
@@ -9523,8 +9523,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "22q35elxfe",
-      "Integrity": "Vqze0zT9WjnsyCKhvr2DyWTInA1runoea/jDsEyg6c4=",
+      "Fingerprint": "lx4wg6axro",
+      "Integrity": "B1dHvaNnXvrPdcuEFy0FnAP4xn9g99mfmhYlolQEdvk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\logo.png"
@@ -9571,7 +9571,46 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"0z9NQ7xfDj31zFcOBufvbI0ckC01Bi7riWa9kxLz0eU=\""
+          "Value": "\"ynPLiMxQEOEAu0k+NYJ8SCPDgZjx1AVABvaw/C/kJhk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 30 Apr 2025 13:57:58 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ynPLiMxQEOEAu0k+NYJ8SCPDgZjx1AVABvaw/C/kJhk="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/blazor.boot.json",
+      "AssetFile": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\obj\\Debug\\net8.0\\compressed\\n3po9h39sb-26z72hi2io.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000104395031"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9578"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"jYqOSwHNqQYd6xlDnaPaJeOgr2otb+ce3hu4yvfmyM4=\""
         },
         {
           "Name": "Last-Modified",
@@ -9580,45 +9619,6 @@
         {
           "Name": "Cache-Control",
           "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-0z9NQ7xfDj31zFcOBufvbI0ckC01Bi7riWa9kxLz0eU="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/blazor.boot.json",
-      "AssetFile": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\obj\\Debug\\net8.0\\compressed\\n3po9h39sb-xbg6s7lrhy.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000104405930"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "9577"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"sTt30QIffvi0dEQmh/lcocTTUVpYf/evijn+K4J1vHw=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 11:59:02 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
         },
         {
           "Name": "Content-Encoding",
@@ -9634,19 +9634,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"0z9NQ7xfDj31zFcOBufvbI0ckC01Bi7riWa9kxLz0eU=\""
+          "Value": "W/\"ynPLiMxQEOEAu0k+NYJ8SCPDgZjx1AVABvaw/C/kJhk=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-0z9NQ7xfDj31zFcOBufvbI0ckC01Bi7riWa9kxLz0eU="
+          "Value": "sha256-ynPLiMxQEOEAu0k+NYJ8SCPDgZjx1AVABvaw/C/kJhk="
         }
       ]
     },
     {
       "Route": "_framework/blazor.boot.json.gz",
-      "AssetFile": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\obj\\Debug\\net8.0\\compressed\\n3po9h39sb-xbg6s7lrhy.gz",
+      "AssetFile": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\obj\\Debug\\net8.0\\compressed\\n3po9h39sb-26z72hi2io.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -9655,7 +9655,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "9577"
+          "Value": "9578"
         },
         {
           "Name": "Content-Type",
@@ -9663,11 +9663,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"sTt30QIffvi0dEQmh/lcocTTUVpYf/evijn+K4J1vHw=\""
+          "Value": "\"jYqOSwHNqQYd6xlDnaPaJeOgr2otb+ce3hu4yvfmyM4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 11:59:02 GMT"
+          "Value": "Wed, 30 Apr 2025 12:21:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9685,7 +9685,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-sTt30QIffvi0dEQmh/lcocTTUVpYf/evijn+K4J1vHw="
+          "Value": "sha256-jYqOSwHNqQYd6xlDnaPaJeOgr2otb+ce3hu4yvfmyM4="
         }
       ]
     },
@@ -17098,7 +17098,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "14484"
+          "Value": "14504"
         },
         {
           "Name": "Content-Type",
@@ -17149,7 +17149,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 11:57:05 GMT"
+          "Value": "Wed, 30 Apr 2025 12:21:12 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -17202,7 +17202,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 11:57:05 GMT"
+          "Value": "Wed, 30 Apr 2025 12:21:12 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -17286,7 +17286,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 11:58:50 GMT"
+          "Value": "Wed, 30 Apr 2025 12:21:29 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -17339,7 +17339,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 11:58:50 GMT"
+          "Value": "Wed, 30 Apr 2025 12:21:29 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -17372,7 +17372,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "46404"
+          "Value": "46312"
         },
         {
           "Name": "Content-Type",
@@ -17380,11 +17380,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Pmpjrf8/UfHySaIAcs6TN7nQpgLBJzFHTnKCt0zkqXM=\""
+          "Value": "\"sLT5m6vT+Lm4QuVdB3tUujt19hAil5H3uTVBd+PVY2w=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 12:21:28 GMT"
+          "Value": "Wed, 30 Apr 2025 13:57:55 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -17394,13 +17394,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Pmpjrf8/UfHySaIAcs6TN7nQpgLBJzFHTnKCt0zkqXM="
+          "Value": "sha256-sLT5m6vT+Lm4QuVdB3tUujt19hAil5H3uTVBd+PVY2w="
         }
       ]
     },
     {
       "Route": "_framework/StaffTrackUI.pdb",
-      "AssetFile": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\obj\\Debug\\net8.0\\compressed\\pbz28nxy0i-2ouqs7azsf.gz",
+      "AssetFile": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\obj\\Debug\\net8.0\\compressed\\pbz28nxy0i-oyzplxbrgt.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
@@ -17419,11 +17419,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"NQ14vLbpjUjKQVxPaAes6ZoVlfgV0vt0aUNp9SLL864=\""
+          "Value": "\"bx1KV8j/jTT8TJbKleILv+lfEBwKCd4KxJBZ3aIEsf0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 11:58:49 GMT"
+          "Value": "Wed, 30 Apr 2025 12:21:28 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -17443,19 +17443,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"Pmpjrf8/UfHySaIAcs6TN7nQpgLBJzFHTnKCt0zkqXM=\""
+          "Value": "W/\"sLT5m6vT+Lm4QuVdB3tUujt19hAil5H3uTVBd+PVY2w=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Pmpjrf8/UfHySaIAcs6TN7nQpgLBJzFHTnKCt0zkqXM="
+          "Value": "sha256-sLT5m6vT+Lm4QuVdB3tUujt19hAil5H3uTVBd+PVY2w="
         }
       ]
     },
     {
       "Route": "_framework/StaffTrackUI.pdb.gz",
-      "AssetFile": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\obj\\Debug\\net8.0\\compressed\\pbz28nxy0i-2ouqs7azsf.gz",
+      "AssetFile": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\obj\\Debug\\net8.0\\compressed\\pbz28nxy0i-oyzplxbrgt.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -17472,11 +17472,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"NQ14vLbpjUjKQVxPaAes6ZoVlfgV0vt0aUNp9SLL864=\""
+          "Value": "\"bx1KV8j/jTT8TJbKleILv+lfEBwKCd4KxJBZ3aIEsf0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 11:58:49 GMT"
+          "Value": "Wed, 30 Apr 2025 12:21:28 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -17494,7 +17494,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-NQ14vLbpjUjKQVxPaAes6ZoVlfgV0vt0aUNp9SLL864="
+          "Value": "sha256-bx1KV8j/jTT8TJbKleILv+lfEBwKCd4KxJBZ3aIEsf0="
         }
       ]
     },
@@ -17517,7 +17517,46 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"k3nMD4uhZkKrneFiHsGXoEq1zXPQS7dSW5LdWZUR+80=\""
+          "Value": "\"Zj1kqq9x3pZtBDDoVD55FOB/q1bmznYZsRLY7qFkVPw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 30 Apr 2025 13:57:56 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Zj1kqq9x3pZtBDDoVD55FOB/q1bmznYZsRLY7qFkVPw="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/StaffTrackUI.wasm",
+      "AssetFile": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\obj\\Debug\\net8.0\\compressed\\xlgf776m75-q3egu1d9tv.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000039089985"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "25581"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"c9jexml+PBRA9xRT+fXKR3BvYva00Rzbm/ZyLTexurU=\""
         },
         {
           "Name": "Last-Modified",
@@ -17526,45 +17565,6 @@
         {
           "Name": "Cache-Control",
           "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-k3nMD4uhZkKrneFiHsGXoEq1zXPQS7dSW5LdWZUR+80="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/StaffTrackUI.wasm",
-      "AssetFile": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\obj\\Debug\\net8.0\\compressed\\xlgf776m75-9lbvy2lpgg.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000039079292"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "25588"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"pAX0pZKV0fmMNXfxZ9I/FJQFh6vxg9+5aL8cI+YQxeM=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 11:58:50 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
         },
         {
           "Name": "Content-Encoding",
@@ -17580,19 +17580,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"k3nMD4uhZkKrneFiHsGXoEq1zXPQS7dSW5LdWZUR+80=\""
+          "Value": "W/\"Zj1kqq9x3pZtBDDoVD55FOB/q1bmznYZsRLY7qFkVPw=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-k3nMD4uhZkKrneFiHsGXoEq1zXPQS7dSW5LdWZUR+80="
+          "Value": "sha256-Zj1kqq9x3pZtBDDoVD55FOB/q1bmznYZsRLY7qFkVPw="
         }
       ]
     },
     {
       "Route": "_framework/StaffTrackUI.wasm.gz",
-      "AssetFile": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\obj\\Debug\\net8.0\\compressed\\xlgf776m75-9lbvy2lpgg.gz",
+      "AssetFile": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\obj\\Debug\\net8.0\\compressed\\xlgf776m75-q3egu1d9tv.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -17601,7 +17601,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "25588"
+          "Value": "25581"
         },
         {
           "Name": "Content-Type",
@@ -17609,11 +17609,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pAX0pZKV0fmMNXfxZ9I/FJQFh6vxg9+5aL8cI+YQxeM=\""
+          "Value": "\"c9jexml+PBRA9xRT+fXKR3BvYva00Rzbm/ZyLTexurU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 11:58:50 GMT"
+          "Value": "Wed, 30 Apr 2025 12:21:29 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -17631,7 +17631,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-pAX0pZKV0fmMNXfxZ9I/FJQFh6vxg9+5aL8cI+YQxeM="
+          "Value": "sha256-c9jexml+PBRA9xRT+fXKR3BvYva00Rzbm/ZyLTexurU="
         }
       ]
     },
@@ -40459,7 +40459,7 @@
       ]
     },
     {
-      "Route": "logo.22q35elxfe.png",
+      "Route": "logo.lx4wg6axro.png",
       "AssetFile": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\wwwroot\\logo.png",
       "Selectors": [],
       "ResponseHeaders": [
@@ -40469,7 +40469,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "34127"
+          "Value": "43138"
         },
         {
           "Name": "Content-Type",
@@ -40477,11 +40477,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Vqze0zT9WjnsyCKhvr2DyWTInA1runoea/jDsEyg6c4=\""
+          "Value": "\"B1dHvaNnXvrPdcuEFy0FnAP4xn9g99mfmhYlolQEdvk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 29 Apr 2025 11:42:28 GMT"
+          "Value": "Wed, 30 Apr 2025 13:53:41 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -40491,7 +40491,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "22q35elxfe"
+          "Value": "lx4wg6axro"
         },
         {
           "Name": "label",
@@ -40499,7 +40499,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-Vqze0zT9WjnsyCKhvr2DyWTInA1runoea/jDsEyg6c4="
+          "Value": "sha256-B1dHvaNnXvrPdcuEFy0FnAP4xn9g99mfmhYlolQEdvk="
         }
       ]
     },
@@ -40514,7 +40514,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "34127"
+          "Value": "43138"
         },
         {
           "Name": "Content-Type",
@@ -40522,11 +40522,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Vqze0zT9WjnsyCKhvr2DyWTInA1runoea/jDsEyg6c4=\""
+          "Value": "\"B1dHvaNnXvrPdcuEFy0FnAP4xn9g99mfmhYlolQEdvk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 29 Apr 2025 11:42:28 GMT"
+          "Value": "Wed, 30 Apr 2025 13:53:41 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -40536,7 +40536,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Vqze0zT9WjnsyCKhvr2DyWTInA1runoea/jDsEyg6c4="
+          "Value": "sha256-B1dHvaNnXvrPdcuEFy0FnAP4xn9g99mfmhYlolQEdvk="
         }
       ]
     },

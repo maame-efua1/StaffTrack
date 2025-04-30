@@ -61,6 +61,10 @@
           "SelectedChildIndex": 5,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "NotificationDTO.cs",
@@ -70,8 +74,7 @@
               "RelativeToolTip": "StaffTrackShared\\DTOs\\NotificationDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T11:52:48.199Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-30T11:52:48.199Z"
             },
             {
               "$type": "Document",
@@ -79,12 +82,11 @@
               "Title": "NotificationController.cs",
               "DocumentMoniker": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackAPI\\Controllers\\NotificationController.cs",
               "RelativeDocumentMoniker": "StaffTrackAPI\\Controllers\\NotificationController.cs",
-              "ToolTip": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackAPI\\Controllers\\NotificationController.cs*",
-              "RelativeToolTip": "StaffTrackAPI\\Controllers\\NotificationController.cs*",
+              "ToolTip": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackAPI\\Controllers\\NotificationController.cs",
+              "RelativeToolTip": "StaffTrackAPI\\Controllers\\NotificationController.cs",
               "ViewState": "AgIAAC0AAAAAAAAAAAAswCEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T11:51:01.417Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-30T11:51:01.417Z"
             },
             {
               "$type": "Document",
@@ -96,8 +98,7 @@
               "RelativeToolTip": "StaffTrackAPI\\Models\\Notification.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T11:38:45.656Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-30T11:38:45.656Z"
             },
             {
               "$type": "Document",
@@ -109,12 +110,7 @@
               "RelativeToolTip": "StaffTrackAPI\\Controllers\\ReportController.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAA0wBYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T10:55:29.447Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+              "WhenOpened": "2025-04-30T10:55:29.447Z"
             },
             {
               "$type": "Document",
@@ -124,7 +120,7 @@
               "RelativeDocumentMoniker": "StaffTrackUI\\Pages\\Home.razor",
               "ToolTip": "C:\\Users\\Eugenia Efua Quartey\\source\\repos\\StaffTrack\\StaffTrackUI\\Pages\\Home.razor",
               "RelativeToolTip": "StaffTrackUI\\Pages\\Home.razor",
-              "ViewState": "AgIAAP8AAAAAAAAAAAAAABABAAANAAAAAAAAAA==",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAABABAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-04-29T12:19:56.265Z",
               "EditorCaption": ""
@@ -139,8 +135,7 @@
               "RelativeToolTip": "StaffTrackUI\\Services\\DashboardService.cs",
               "ViewState": "AgIAACMAAAAAAAAAAAAwwDgAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-29T13:08:00.008Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-29T13:08:00.008Z"
             },
             {
               "$type": "Document",
@@ -152,8 +147,7 @@
               "RelativeToolTip": "StaffTrackUI\\Pages\\SubmitReports.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAFsAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-30T10:39:34.985Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-30T10:39:34.985Z"
             },
             {
               "$type": "Document",
@@ -165,8 +159,7 @@
               "RelativeToolTip": "StaffTrackShared\\DTOs\\RegisterDTO.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAAAswAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T10:23:16.323Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-30T10:23:16.323Z"
             },
             {
               "$type": "Document",
@@ -178,8 +171,7 @@
               "RelativeToolTip": "StaffTrackUI\\Pages\\Login.razor",
               "ViewState": "AgIAABUAAAAAAAAAAAAAwGEAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-29T15:30:46.291Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-29T15:30:46.291Z"
             },
             {
               "$type": "Document",
@@ -191,8 +183,7 @@
               "RelativeToolTip": "StaffTrackUI\\Services\\LoginService.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAgwDwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-29T16:57:53.105Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-29T16:57:53.105Z"
             },
             {
               "$type": "Document",
