@@ -1,0 +1,258 @@
+﻿@page "/notifications"
+@layout EmptyLayout
+@using StaffTrackShared.DTOs
+@using System.Net.Http.Json
+@using StaffTrackUI.Services
+@inject NavigationManager Navigation
+@inject HttpClient HttpClient
+@inject LoginService LoginService
+@implements IDisposable
+
+<PageTitle>StaffTrack - Notifications</PageTitle>
+
+<div class="flex flex-col h-screen bg-white dark:bg-zinc-900">
+    <!-- Sidebar -->
+    <div class="w-64 h-screen bg-gray-100 dark:bg-zinc-800 flex flex-col justify-between fixed md:static md:w-1/5 lg:w-1/6">
+        <!-- Sidebar Menu -->
+        <div>
+            <div class="p-4">
+                <div class="logo flex items-center gap-2">
+                    <img src="/logo.png" alt="StaffTrack Logo" class="w-8 h-8" />
+                    <h1 class="text-2xl font-bold text-actionPrimary-default">StaffTrack</h1>
+                </div>
+            </div>
+            <nav class="mt-4">
+                <a href="/home" class="flex items-center px-4 py-3 text-actionPrimary-default hover:bg-actionPrimary-default hover:text-white @(Navigation.Uri.EndsWith("/home") ? "bg-actionPrimary-default text-white" : "")">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7m-9 2v7h4v-7m-4 0H5l7-7"></path>
+                    </svg>
+                    Dashboard
+                </a>
+                <a href="/submit-report" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-actionPrimary-default hover:text-white @(Navigation.Uri.EndsWith("/submit-report") ? "bg-actionPrimary-default text-white" : "")">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-6h6v6m-3-9v12m-6 0h12"></path>
+                    </svg>
+                    Submitting Report
+                </a>
+                <a href="/view-reports" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-actionPrimary-default hover:text-white @(Navigation.Uri.EndsWith("/view-reports") ? "bg-actionPrimary-default text-white" : "")">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-6h6v6m-3-9v12m-6 0h12"></path>
+                    </svg>
+                    View Reports
+                </a>
+                <a href="/settings" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-actionPrimary-default hover:text-white @(Navigation.Uri.EndsWith("/settings") ? "bg-actionPrimary-default text-white" : "")">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37a1.724 1.724 0 002.572-1.065z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    Settings
+                </a>
+            </nav>
+        </div>
+
+        <!-- Help & Support -->
+        <div class="p-4 hidden md:block">
+            <div class="bg-gray-200 dark:bg-zinc-700 rounded-lg p-4 flex items-center">
+                <svg class="w-6 h-6 text-actionPrimary-default mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636a9 9 0 11-12.728 0 9 9 0 0112.728 0zM12 8v4m0 4h.01"></path>
+                </svg>
+                <div>
+                    <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Need help?</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">Please contact support.</p>
+                </div>
+            </div>
+            <button class="mt-2 w-full bg-actionPrimary-default text-white py-2 rounded-lg hover:bg-actionPrimary-hover">
+                Help & Support
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col ml-0 md:ml-64">
+        <!-- Header -->
+        <header class="header bg-white shadow-md fixed top-0 w-full z-10">
+            <div class="header-content max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+                <div class="logo flex items-center gap-2">
+                    <img src="/logo.png" alt="StaffTrack Logo" class="w-8 h-8" />
+                    <h3 class="text-actionPrimary-default font-semibold text-xl">StaffTrack</h3>
+                </div>
+                <div class="user-profile flex items-center gap-3">
+                    @{
+                        var avatarInitial = LoginService.CurrentUser?.FullName?.FirstOrDefault() ?? 'A';
+                        var userName = LoginService.CurrentUser?.FullName ?? "User";
+                    }
+                    <div class="notifications relative">
+                        <button class="notification-btn text-actionPrimary-default text-xl">
+                            <i class="mdi mdi-bell-outline"></i>
+                            @if (UnreadNotifications > 0)
+                            {
+                                <span class="notification-badge bg-red-500 text-white text-xs rounded-full px-2 py-1 absolute -top-1 -right-1">@UnreadNotifications</span>
+                            }
+                        </button>
+                    </div>
+                    <div class="avatar bg-actionPrimary-default text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-semibold">
+                        @avatarInitial
+                    </div>
+                    <span class="user-name text-sm text-gray-800">Welcome, @userName!</span>
+                    <button class="logout-btn border border-actionPrimary-default text-actionPrimary-default px-3 py-1 rounded hover:bg-actionPrimary-default hover:text-white" @onclick="HandleLogout">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav-bar bg-white shadow-md mt-16">
+            <div class="nav-content max-w-6xl mx-auto px-4 py-3">
+                @{
+                    var iconClass = IsMobileMenuOpen ? "mdi-close" : "mdi-menu";
+                    var navLinksClass = IsMobileMenuOpen ? "flex-col mt-2 md:flex-row md:mt-0 md:flex" : "hidden md:flex";
+                }
+                <button class="hamburger text-actionPrimary-default text-xl md:hidden" @onclick="ToggleMobileMenu">
+                    <i class="mdi @iconClass"></i>
+                </button>
+                <ul class="nav-links flex gap-6 @navLinksClass">
+                    <li><a class="nav-link text-gray-800 font-medium hover:text-actionPrimary-default hover:underline underline-offset-4" href="/home">Dashboard</a></li>
+                    <li><a class="nav-link text-gray-800 font-medium hover:text-actionPrimary-default hover:underline underline-offset-4" href="/submit-report">Submitting Report</a></li>
+                    <li><a class="nav-link text-gray-800 font-medium hover:text-actionPrimary-default hover:underline underline-offset-4" href="/view-reports">View Reports</a></li>
+                    <li><a class="nav-link text-gray-800 font-medium hover:text-actionPrimary-default hover:underline underline-offset-4" href="/settings">Settings</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Page Content -->
+        <main class="flex-1 p-4 overflow-y-auto mt-16 pb-16">
+            @if (!LoginService.IsAuthenticated())
+            {
+                <div class="error text-center text-red-500 text-lg py-6" role="alert">
+                    Please log in to view notifications.
+                </div>
+            }
+            else if (IsLoading)
+            {
+                <div class="loading text-center text-actionPrimary-default text-lg py-6">Loading...</div>
+            }
+            else if (!string.IsNullOrEmpty(ErrorMessage))
+            {
+                <div class="error text-center text-red-500 text-lg py-6" role="alert">@ErrorMessage</div>
+            }
+            else
+            {
+                <!-- Notifications -->
+                <div class="notifications mb-6">
+                    <h2 class="section-title text-actionPrimary-default text-lg md:text-xl font-semibold mb-4">Notifications</h2>
+                    <div class="notifications-list bg-white rounded-lg shadow-md overflow-hidden">
+                        @if (Notification.Any())
+                        {
+                            @foreach (var notification in Notification)
+                            {
+                                var itemClass = notification.IsRead ? "bg-gray-50/5" : "bg-white";
+                                var messageClass = notification.IsRead ? "text-actionPrimary-default" : "text-gray-800";
+                                <div class="notification-item px-4 py-3 md:p-4 border-b border-gray-200 @itemClass hover:bg-actionPrimary-default/10">
+                                    <p class="notification-message text-sm @messageClass">@notification.Message</p>
+                                    <span class="notification-timestamp text-xs text-gray-500">@notification.Timestamp</span>
+                                </div>
+                            }
+                            <button class="mark-all-read w-full bg-actionPrimary-default text-white py-2 rounded-b-lg hover:bg-actionPrimary-hover" @onclick="MarkAllAsRead">Mark All as Read</button>
+                        }
+                        else
+                        {
+                            <div class="no-notifications text-center text-gray-500 text-sm p-4">No notifications available.</div>
+                        }
+                    </div>
+                </div>
+            }
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer bg-actionPrimary-default fixed bottom-0 w-full py-2 md:py-3">
+            <div class="footer-content max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+                <div class="footer-logo flex items-center gap-2 mb-2 md:mb-0">
+                    <img src="/logo.png" alt="StaffTrack Logo" class="w-6 h-6" />
+                    <h3 class="text-white font-semibold text-sm md:text-base">StaffTrack</h3>
+                </div>
+                <div class="footer-links flex flex-col md:flex-row items-center gap-2 md:gap-3">
+                    <p class="footer-copyright text-white/80 text-xs md:text-sm">© 2025 StaffTrack</p>
+                    <a href="#" class="footer-link text-white/80 text-xs md:text-sm hover:text-white">Privacy Policy</a>
+                    <a href="#" class="footer-link text-white/80 text-xs md:text-sm hover:text-white">Support</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+@code {
+    private bool IsMobileMenuOpen { get; set; }
+    private bool IsLoading { get; set; }
+    private string? ErrorMessage { get; set; }
+    private List<NotificationDTO> Notification { get; set; } = new();
+    private int UnreadNotifications { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        LoginService.OnUserChanged += StateHasChanged;
+
+        if (LoginService.CurrentUser == null)
+        {
+            await LoginService.LoadUserFromLocalStorageAsync();
+        }
+
+        if (!LoginService.IsAuthenticated())
+        {
+            Navigation.NavigateTo("/");
+            return;
+        }
+
+        IsLoading = true;
+        try
+        {
+            Notification = await GetNotificationsAsync();
+            UnreadNotifications = Notification.Count(n => !n.IsRead);
+        }
+        catch
+        {
+            ErrorMessage = "Failed to load notifications. Please try again.";
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+
+    private async Task<List<NotificationDTO>> GetNotificationsAsync()
+    {
+        var response = await HttpClient.GetAsync("notification");
+        if (response.IsSuccessStatusCode)
+        {
+            return await response.Content.ReadFromJsonAsync<List<NotificationDTO>>() ?? new List<NotificationDTO>();
+        }
+        return new List<NotificationDTO>();
+    }
+
+    private async Task MarkAllAsRead()
+    {
+        var response = await HttpClient.PostAsync("notification/mark-all-read", null);
+        if (response.IsSuccessStatusCode)
+        {
+            foreach (var notification in Notification)
+            {
+                notification.IsRead = true;
+            }
+            UnreadNotifications = 0;
+        }
+    }
+
+    private async Task HandleLogout()
+    {
+        await LoginService.LogoutAsync();
+        Navigation.NavigateTo("/");
+    }
+
+    private void ToggleMobileMenu()
+    {
+        IsMobileMenuOpen = !IsMobileMenuOpen;
+    }
+
+    public void Dispose()
+    {
+        LoginService.OnUserChanged -= StateHasChanged;
+    }
+}

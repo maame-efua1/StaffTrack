@@ -1,0 +1,352 @@
+/* Custom color definitions */
+.text-actionPrimary-default[b-jxapsg5405] {
+    color: #2F4F4F; /* Forest green */
+}
+
+.bg-actionPrimary-default[b-jxapsg5405] {
+    background-color: #2F4F4F; /* Forest green */
+}
+
+.bg-actionPrimary-hover[b-jxapsg5405] {
+    background-color: #3C6F6F; /* Lighter forest green for hover */
+}
+
+.text-actionPrimary-hover[b-jxapsg5405] {
+    color: #3C6F6F; /* Lighter forest green for hover */
+}
+
+.text-yellow-500[b-jxapsg5405] {
+    color: #f59e0b;
+}
+
+.text-red-500[b-jxapsg5405] {
+    color: #ef4444;
+}
+
+.bg-white[b-jxapsg5405] {
+    background-color: #FFFFFF;
+}
+
+.dark\:bg-zinc-800[b-jxapsg5405] {
+    background-color: #1A2A2A; /* Dark gray for dark mode */
+}
+
+.dark\:text-gray-200[b-jxapsg5405] {
+    color: #E5E7EB;
+}
+
+/* Tailwind-like utility classes with responsiveness */
+.h-screen[b-jxapsg5405] {
+    height: 100vh;
+}
+
+.w-64[b-jxapsg5405] {
+    width: 16rem;
+}
+
+.flex[b-jxapsg5405] {
+    display: flex;
+}
+
+.flex-col[b-jxapsg5405] {
+    flex-direction: column;
+}
+
+.justify-between[b-jxapsg5405] {
+    justify-content: space-between;
+}
+
+.items-center[b-jxapsg5405] {
+    align-items: center;
+}
+
+.p-4[b-jxapsg5405] {
+    padding: 1rem;
+}
+
+.text-2xl[b-jxapsg5405] {
+    font-size: 1.5rem;
+}
+
+.font-bold[b-jxapsg5405] {
+    font-weight: 700;
+}
+
+.text-gray-700[b-jxapsg5405] {
+    color: #374151;
+}
+
+.dark\:text-gray-300[b-jxapsg5405] {
+    color: #d1d5db;
+}
+
+.hover\:bg-actionPrimary-default:hover[b-jxapsg5405] {
+    background-color: #2F4F4F;
+}
+
+.hover\:text-white:hover[b-jxapsg5405] {
+    color: #FFFFFF;
+}
+
+.mt-4[b-jxapsg5405] {
+    margin-top: 1rem;
+}
+
+.px-4[b-jxapsg5405] {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.py-3[b-jxapsg5405] {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+
+.w-5[b-jxapsg5405] {
+    width: 1.25rem;
+}
+
+.h-5[b-jxapsg5405] {
+    height: 1.25rem;
+}
+
+.mr-3[b-jxapsg5405] {
+    margin-right: 0.75rem;
+}
+
+.bg-gray-100[b-jxapsg5405] {
+    background-color: #F3F4F6;
+}
+
+.dark\:bg-zinc-700[b-jxapsg5405] {
+    background-color: #3F3F46;
+}
+
+.rounded-lg[b-jxapsg5405] {
+    border-radius: 0.5rem;
+}
+
+.text-sm[b-jxapsg5405] {
+    font-size: 0.875rem;
+}
+
+.font-medium[b-jxapsg5405] {
+    font-weight: 500;
+}
+
+.text-gray-500[b-jxapsg5405] {
+    color: #6B7280;
+}
+
+.dark\:text-gray-400[b-jxapsg5405] {
+    color: #9CA3AF;
+}
+
+.text-xs[b-jxapsg5405] {
+    font-size: 0.75rem;
+}
+
+.mt-2[b-jxapsg5405] {
+    margin-top: 0.5rem;
+}
+
+.w-full[b-jxapsg5405] {
+    width: 100%;
+}
+
+.text-white[b-jxapsg5405] {
+    color: #FFFFFF;
+}
+
+.py-2[b-jxapsg5405] {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.flex-1[b-jxapsg5405] {
+    flex: 1 1 0%;
+}
+
+.shadow-sm[b-jxapsg5405] {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.mx-auto[b-jxapsg5405] {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.max-w-6xl[b-jxapsg5405] {
+    max-width: 72rem;
+}
+
+.p-6[b-jxapsg5405] {
+    padding: 1.5rem;
+}
+
+.text-lg[b-jxapsg5405] {
+    font-size: 1.125rem;
+}
+
+.overflow-y-auto[b-jxapsg5405] {
+    overflow-y: auto;
+}
+
+.mt-16[b-jxapsg5405] {
+    margin-top: 4rem;
+}
+
+.pb-16[b-jxapsg5405] {
+    padding-bottom: 4rem;
+}
+
+.mb-6[b-jxapsg5405] {
+    margin-bottom: 1.5rem;
+}
+
+.shadow-md[b-jxapsg5405] {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.text-gray-800[b-jxapsg5405] {
+    color: #1F2937;
+}
+
+.border-b[b-jxapsg5405] {
+    border-bottom-width: 1px;
+}
+
+.border-gray-200[b-jxapsg5405] {
+    border-color: #E5E7EB;
+}
+
+.hover\:bg-actionPrimary-default\/10:hover[b-jxapsg5405] {
+    background-color: rgba(47, 79, 79, 0.1);
+}
+
+.transition-all[b-jxapsg5405] {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+.text-center[b-jxapsg5405] {
+    text-align: center;
+}
+
+.w-8[b-jxapsg5405] {
+    width: 2rem;
+}
+
+.h-8[b-jxapsg5405] {
+    height: 2rem;
+}
+
+.fixed[b-jxapsg5405] {
+    position: fixed;
+}
+
+.top-0[b-jxapsg5405] {
+    top: 0;
+}
+
+.bottom-0[b-jxapsg5405] {
+    bottom: 0;
+}
+
+.z-10[b-jxapsg5405] {
+    z-index: 10;
+}
+
+.gap-2[b-jxapsg5405] {
+    gap: 0.5rem;
+}
+
+.gap-3[b-jxapsg5405] {
+    gap: 0.75rem;
+}
+
+.rounded-full[b-jxapsg5405] {
+    border-radius: 9999px;
+}
+
+.-top-1[b-jxapsg5405] {
+    top: -0.25rem;
+}
+
+.-right-1[b-jxapsg5405] {
+    right: -0.25rem;
+}
+
+.mt-1[b-jxapsg5405] {
+    margin-top: 0.25rem;
+}
+
+.shadow-lg[b-jxapsg5405] {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.rounded-b-lg[b-jxapsg5405] {
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+.md\:static[b-jxapsg5405] {
+    position: static;
+}
+
+.md\:w-1\/5[b-jxapsg5405] {
+    width: 20%;
+}
+
+.lg\:w-1\/6[b-jxapsg5405] {
+    width: 16.666667%;
+}
+
+.md\:ml-64[b-jxapsg5405] {
+    margin-left: 16rem;
+}
+
+.md\:flex-row[b-jxapsg5405] {
+    flex-direction: row;
+}
+
+.md\:hidden[b-jxapsg5405] {
+    display: none;
+}
+
+.md\:block[b-jxapsg5405] {
+    display: block;
+}
+
+.md\:p-4[b-jxapsg5405] {
+    padding: 1rem;
+}
+
+.md\:text-sm[b-jxapsg5405] {
+    font-size: 0.875rem;
+}
+
+.md\:text-lg[b-jxapsg5405] {
+    font-size: 1.125rem;
+}
+
+.md\:text-xl[b-jxapsg5405] {
+    font-size: 1.25rem;
+}
+
+.md\:mt-0[b-jxapsg5405] {
+    margin-top: 0;
+}
+
+.mb-2[b-jxapsg5405] {
+    margin-bottom: 0.5rem;
+}
+
+.md\:mb-0[b-jxapsg5405] {
+    margin-bottom: 0;
+}
+
+.font-semibold[b-jxapsg5405] {
+    font-weight: 600;
+}

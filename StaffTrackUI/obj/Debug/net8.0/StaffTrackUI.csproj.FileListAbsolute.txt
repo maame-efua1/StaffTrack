@@ -1118,9 +1118,10 @@ C:\Users\Eugenia Efua Quartey\source\repos\StaffTrack\StaffTrackUI\obj\Debug\net
 C:\Users\Eugenia Efua Quartey\source\repos\StaffTrack\StaffTrackUI\obj\Debug\net8.0\compressed\wrrhivxqx2-kzcms2tvtp.gz
 C:\Users\Eugenia Efua Quartey\source\repos\StaffTrack\StaffTrackUI\obj\Debug\net8.0\scopedcss\Pages\Home.razor.rz.scp.css
 C:\Users\Eugenia Efua Quartey\source\repos\StaffTrack\StaffTrackUI\obj\Debug\net8.0\scopedcss\Pages\Login.razor.rz.scp.css
-C:\Users\Eugenia Efua Quartey\source\repos\StaffTrack\StaffTrackUI\obj\Debug\net8.0\compressed\0hnoiys1iw-lyqcnp8wip.gz
-C:\Users\Eugenia Efua Quartey\source\repos\StaffTrack\StaffTrackUI\obj\Debug\net8.0\compressed\o2dnhd7esk-7k2tnca6x7.gz
 C:\Users\Eugenia Efua Quartey\source\repos\StaffTrack\StaffTrackUI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
-C:\Users\Eugenia Efua Quartey\source\repos\StaffTrack\StaffTrackUI\obj\Debug\net8.0\compressed\xlgf776m75-q3egu1d9tv.gz
-C:\Users\Eugenia Efua Quartey\source\repos\StaffTrack\StaffTrackUI\obj\Debug\net8.0\compressed\pbz28nxy0i-oyzplxbrgt.gz
-C:\Users\Eugenia Efua Quartey\source\repos\StaffTrack\StaffTrackUI\obj\Debug\net8.0\compressed\n3po9h39sb-26z72hi2io.gz
+C:\Users\Eugenia Efua Quartey\source\repos\StaffTrack\StaffTrackUI\obj\Debug\net8.0\scopedcss\Pages\Notifications.razor.rz.scp.css
+C:\Users\Eugenia Efua Quartey\source\repos\StaffTrack\StaffTrackUI\obj\Debug\net8.0\compressed\0hnoiys1iw-4rq5i7ju2q.gz
+C:\Users\Eugenia Efua Quartey\source\repos\StaffTrack\StaffTrackUI\obj\Debug\net8.0\compressed\o2dnhd7esk-4yob85w0xr.gz
+C:\Users\Eugenia Efua Quartey\source\repos\StaffTrack\StaffTrackUI\obj\Debug\net8.0\compressed\xlgf776m75-7bzf87jck5.gz
+C:\Users\Eugenia Efua Quartey\source\repos\StaffTrack\StaffTrackUI\obj\Debug\net8.0\compressed\pbz28nxy0i-8w6qjf1lj5.gz
+C:\Users\Eugenia Efua Quartey\source\repos\StaffTrack\StaffTrackUI\obj\Debug\net8.0\compressed\n3po9h39sb-ihmgeuvorh.gz

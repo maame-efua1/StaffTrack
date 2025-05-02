@@ -61,7 +61,8 @@ public class LoginService
 
             CurrentUser = new UserDTO
             {
-               FullName = fullName
+               FullName = fullName,
+               Id = userId
             };
         }
     }

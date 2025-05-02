@@ -5,201 +5,290 @@
 @inject NavigationManager Navigation
 @inject DashboardService DashboardService
 @inject LoginService LoginService
+@inject HttpClient HttpClient
 @implements IDisposable
 
 <PageTitle>StaffTrack - Dashboard</PageTitle>
 
-<!-- Header -->
-<header class="header bg-white shadow-md fixed top-0 w-full z-10">
-    <div class="header-content max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-        <div class="logo">
-            <img src="/logo.png" alt="StaffTrack Logo" />
-            <h3 class="text-actionPrimary-default font-semibold text-xl">StaffTrack</h3>
+<div class="flex h-screen bg-gray-50 dark:bg-zinc-900">
+    <!-- Sidebar -->
+    <div class="w-64 h-screen bg-gray-100 dark:bg-zinc-800 flex flex-col justify-between">
+        <!-- Sidebar Menu -->
+        <div>
+            <div class="p-4">
+                <div class="logo flex items-center gap-2">
+                    <img src="/logo.png" alt="StaffTrack Logo" class="w-8 h-8" />
+                    <h1 class="text-2xl font-bold text-actionPrimary-default">StaffTrack</h1>
+                </div>
+            </div>
+            <nav class="mt-4">
+                <a href="/home" class="flex items-center px-4 py-3 text-actionPrimary-default hover:bg-actionPrimary-default hover:text-white @(Navigation.Uri.EndsWith("/home") ? "bg-actionPrimary-default text-white" : "")">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7m-9 2v7h4v-7m-4 0H5l7-7"></path>
+                    </svg>
+                    Dashboard
+                </a>
+                <a href="/submit-report" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-actionPrimary-default hover:text-white @(Navigation.Uri.EndsWith("/submit-report") ? "bg-actionPrimary-default text-white" : "")">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-6h6v6m-3-9v12m-6 0h12"></path>
+                    </svg>
+                    Submitting Report
+                </a>
+                <a href="/view-reports" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-actionPrimary-default hover:text-white @(Navigation.Uri.EndsWith("/view-reports") ? "bg-actionPrimary-default text-white" : "")">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-6h6v6m-3-9v12m-6 0h12"></path>
+                    </svg>
+                    View Reports
+                </a>
+                <a href="/notifications" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-actionPrimary-default hover:text-white @(Navigation.Uri.EndsWith("/notifications") ? "bg-actionPrimary-default text-white" : "")">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-6h6v6m-3-9v12m-6 0h12"></path>
+                    </svg>
+                    View Notifications
+                </a>
+                <a href="/settings" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-actionPrimary-default hover:text-white @(Navigation.Uri.EndsWith("/settings") ? "bg-actionPrimary-default text-white" : "")">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37a1.724 1.724 0 002.572-1.065z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    Settings
+                </a>
+            </nav>
         </div>
-        <div class="user-profile flex items-center gap-3">
-            @{
-                var avatarInitial = LoginService.CurrentUser?.FullName?.FirstOrDefault() ?? 'A';
-                var userName = LoginService.CurrentUser?.FullName ?? "User";
-            }
-            <div class="notifications relative">
-                <button class="notification-btn text-actionPrimary-default text-xl" @onclick="ToggleNotifications">
-                    <i class="mdi mdi-bell-outline"></i>
-                    @if (UnreadNotifications > 0)
-                    {
-                        <span class="notification-badge bg-red-500 text-white text-xs rounded-full px-2 py-1 absolute -top-1 -right-1">@UnreadNotifications</span>
+
+        <!-- Help & Support -->
+        <div class="p-4">
+            <div class="bg-gray-200 dark:bg-zinc-700 rounded-lg p-4 flex items-center">
+                <svg class="w-6 h-6 text-actionPrimary-default mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636a9 9 0 11-12.728 0 9 9 0 0112.728 0zM12 8v4m0 4h.01"></path>
+                </svg>
+                <div>
+                    <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Need help?</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">Please contact support.</p>
+                </div>
+            </div>
+            <button class="mt-2 w-full bg-actionPrimary-default text-white py-2 rounded-lg hover:bg-actionPrimary-hover">
+                Help & Support
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col">
+        <!-- Header -->
+        <header class="header bg-white shadow-md fixed top-0 w-full z-10">
+            <div class="header-content max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+                <div class="logo flex items-center gap-2">
+                    <img src="/logo.png" alt="StaffTrack Logo" class="w-8 h-8" />
+                    <h3 class="text-actionPrimary-default font-semibold text-xl">StaffTrack</h3>
+                </div>
+                <div class="user-profile flex items-center gap-3">
+                    @{
+                        var avatarInitial = LoginService.CurrentUser?.FullName?.FirstOrDefault() ?? 'A';
+                        var userName = LoginService.CurrentUser?.FullName ?? "User";
                     }
-                </button>
-                @if (IsNotificationOpen)
-                {
-                    <div class="notification-dropdown absolute right-0 mt-2 bg-white rounded-lg shadow-lg w-64 animate-slide-down">
-                        @if (Notifications.Any())
-                        {
-                            @foreach (var notification in Notifications)
+                    <div class="notifications relative">
+                        <button class="notification-btn text-actionPrimary-default text-xl" @onclick="ToggleNotifications">
+                            <i class="mdi mdi-bell-outline"></i>
+                            @if (UnreadNotifications > 0)
                             {
-                                var itemClass = notification.IsRead ? "bg-gray-50/5" : "bg-white";
-                                var messageClass = notification.IsRead ? "text-actionPrimary-default" : "text-gray-800";
-                                <div class="notification-item px-4 py-2 border-b border-gray-200 @itemClass">
-                                    <p class="notification-message text-sm @messageClass">@notification.Message</p>
-                                    <span class="notification-timestamp text-xs text-gray-500">@notification.Timestamp</span>
+                                <span class="notification-badge bg-red-500 text-white text-xs rounded-full px-2 py-1 absolute -top-1 -right-1">@UnreadNotifications</span>
+                            }
+                        </button>
+                        @if (IsNotificationOpen)
+                        {
+                            <div class="notification-dropdown absolute right-0 mt-2 bg-white rounded-lg shadow-lg w-64 animate-slide-down">
+                                @if (Notifications.Any())
+                                {
+                                    @foreach (var notification in Notifications)
+                                    {
+                                        var itemClass = notification.IsRead ? "bg-gray-50/5" : "bg-white";
+                                        var messageClass = notification.IsRead ? "text-actionPrimary-default" : "text-gray-800";
+                                        <div class="notification-item px-4 py-2 border-b border-gray-200 @itemClass">
+                                            <p class="notification-message text-sm @messageClass">@notification.Message</p>
+                                            <span class="notification-timestamp text-xs text-gray-500">@notification.Timestamp</span>
+                                        </div>
+                                    }
+                                    <button class="mark-all-read w-full bg-actionPrimary-default text-white py-2 rounded-b-lg hover:bg-actionPrimary-hover" @onclick="MarkAllAsRead">Mark All as Read</button>
+                                }
+                                else
+                                {
+                                    <p class="no-notifications px-4 py-2 text-sm text-gray-500">No notifications</p>
+                                }
+                            </div>
+                        }
+                    </div>
+                    <div class="avatar bg-actionPrimary-default text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-semibold">
+                        @avatarInitial
+                    </div>
+                    <span class="user-name text-sm text-gray-800">Welcome, @userName!</span>
+                    <button class="logout-btn border border-actionPrimary-default text-actionPrimary-default px-3 py-1 rounded hover:bg-actionPrimary-default hover:text-white" @onclick="HandleLogout">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <main class="flex-1 p-6 overflow-y-auto mt-16 pb-16">
+            @if (!LoginService.IsAuthenticated())
+            {
+                <div class="error text-center text-red-500 text-lg py-6" role="alert">
+                    Please log in to view the dashboard.
+                </div>
+            }
+            else if (IsLoading)
+            {
+                <div class="loading text-center text-actionPrimary-default text-lg py-6">Loading...</div>
+            }
+            else if (!string.IsNullOrEmpty(ErrorMessage))
+            {
+                <div class="error text-center text-red-500 text-lg py-6" role="alert">@ErrorMessage</div>
+            }
+            else
+            {
+                <!-- Breadcrumb -->
+                <nav class="flex mb-6" aria-label="Breadcrumb">
+                    <ol class="inline-flex items-center space-x-1">
+                        <li class="inline-flex items-center">
+                            <a href="/home" class="text-actionPrimary-default hover:underline">Dashboard</a>
+                        </li>
+                        <li>
+                            <span class="text-gray-500 mx-1">></span>
+                            <span class="text-gray-700 dark:text-gray-300">Dashboard</span>
+                        </li>
+                    </ol>
+                </nav>
+
+                <!-- Summary Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                    <!-- Total Reports -->
+                    <div class="bg-white dark:bg-zinc-800 rounded-lg shadow-md p-6 flex items-center">
+                        <div class="p-3 rounded-full bg-gray-100 dark:bg-zinc-700 mr-4">
+                            <svg class="w-6 h-6 text-actionPrimary-default" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-6h6v6m-3-9v12m-6 0h12"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm">Total Reports</p>
+                            <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-300">@TotalReports</h3>
+                        </div>
+                    </div>
+
+                    <!-- Unread Notifications -->
+                    <div class="bg-white dark:bg-zinc-800 rounded-lg shadow-md p-6 flex items-center">
+                        <div class="p-3 rounded-full bg-gray-100 dark:bg-zinc-700 mr-4">
+                            <svg class="w-6 h-6 text-actionPrimary-default" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 00-5-5.917V4a1 1 0 10-2 0v1.083A6 6 0 006 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0a2 2 0 01-4 0"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm">Unread Notifications</p>
+                            <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-300">@UnreadNotifications</h3>
+                        </div>
+                    </div>
+
+                    <!-- Pending Actions -->
+                    <div class="bg-white dark:bg-zinc-800 rounded-lg shadow-md p-6 flex items-center">
+                        <div class="p-3 rounded-full bg-gray-100 dark:bg-zinc-700 mr-4">
+                            <svg class="w-6 h-6 text-actionPrimary-default" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0-1.104-.896-2-2-2H6c-1.104 0-2 .896-2 2v5c0 1.104.896 2 2 2h4c1.104 0 2-.896 2-2v-5zm8-6h-4c-1.104 0-2 .896-2 2v9c0 1.104.896 2 2 2h4c1.104 0 2-.896 2-2V7c0-1.104-.896-2-2-2z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm">Pending Actions</p>
+                            <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-300">@PendingActions</h3>
+                        </div>
+                    </div>
+
+                    <!-- Progress Percentage -->
+                    <div class="bg-white dark:bg-zinc-800 rounded-lg shadow-md p-6 flex items-center">
+                        <div class="p-3 rounded-full bg-gray-100 dark:bg-zinc-700 mr-4">
+                            <svg class="w-6 h-6 text-actionPrimary-default" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-2a2 2 0 00-2-2H5a2 2 0 00-2 2v2m6 0h6m-3-7v8m-6 0h12m-6-7a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm">Progress</p>
+                            <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-300">@Progress.Percentage%</h3>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+                <!-- Recent Reports -->
+                <div class="recent-reports mb-6">
+                    <h2 class="section-title text-actionPrimary-default text-xl font-semibold mb-4">Recent Reports</h2>
+                    <div class="reports-table bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="table-header grid grid-cols-4 p-4 bg-gray-50/5 font-semibold text-gray-500">
+                            <span class="table-column">Report Title</span>
+                            <span class="table-column">Submission Date</span>
+                            <span class="table-column">Status</span>
+                            <span class="table-column">Actions</span>
+                        </div>
+                        @if (RecentReports.Any())
+                        {
+                            @foreach (var report in RecentReports)
+                            {
+                                var statusClass = report.Status == "Approved" ? "text-actionPrimary-default" : "text-yellow-500";
+                                <div class="table-row grid grid-cols-4 p-4 border-b border-gray-200 hover:bg-actionPrimary-default/10">
+                                    <span class="table-column text-sm text-gray-800">@report.Title</span>
+                                    <span class="table-column text-sm text-gray-800">@report.SubmissionDate</span>
+                                    <span class="table-column text-sm @statusClass">@report.Status</span>
+                                    <span class="table-column">
+                                        <button class="action-btn bg-actionPrimary-default text-white px-3 py-1 rounded hover:bg-actionPrimary-hover hover:scale-105 transition-all">View</button>
+                                    </span>
                                 </div>
                             }
-                            <button class="mark-all-read w-full bg-actionPrimary-default text-white py-2 rounded-b-lg hover:bg-actionPrimary-hover" @onclick="MarkAllAsRead">Mark All as Read</button>
                         }
                         else
                         {
-                            <p class="no-notifications px-4 py-2 text-sm text-gray-500">No notifications</p>
+                            <div class="no-data text-center text-gray-500 text-sm p-4">No recent reports available.</div>
                         }
                     </div>
-                }
-            </div>
-            <div class="avatar bg-actionPrimary-default text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-semibold">
-                @avatarInitial
-            </div>
-            <span class="user-name text-sm text-gray-800">Welcome, @userName!</span>
-            <button class="logout-btn border border-actionPrimary-default text-actionPrimary-default px-3 py-1 rounded hover:bg-actionPrimary-default hover:text-white" @onclick="HandleLogout">Logout</button>
-        </div>
-    </div>
-</header>
-
-<!-- Navigation -->
-<nav class="nav-bar bg-white shadow-md mt-16">
-    <div class="nav-content max-w-6xl mx-auto px-4 py-3">
-        @{
-            var iconClass = IsMobileMenuOpen ? "mdi-close" : "mdi-menu";
-            var navLinksClass = IsMobileMenuOpen ? "flex-col mt-2 md:flex-row md:mt-0 md:flex" : "hidden md:flex";
-        }
-        <button class="hamburger text-actionPrimary-default text-xl md:hidden" @onclick="ToggleMobileMenu">
-            <i class="mdi @iconClass"></i>
-        </button>
-        <ul class="nav-links flex gap-6 @navLinksClass">
-            <li><a class="nav-link text-gray-800 font-medium hover:text-actionPrimary-default hover:underline underline-offset-4 active">Dashboard</a></li>
-            <li><a class="nav-link text-gray-800 font-medium hover:text-actionPrimary-default hover:underline underline-offset-4" href="/submit-report">Submitting Report</a></li>
-            <li><a class="nav-link text-gray-800 font-medium hover:text-actionPrimary-default hover:underline underline-offset-4" href="/view-reports">View Reports</a></li>
-            <li><a class="nav-link text-gray-800 font-medium hover:text-actionPrimary-default hover:underline underline-offset-4" href="/settings">Settings</a></li>
-        </ul>
-    </div>
-</nav>
-
-<!-- Main Content -->
-<div class="dashboard-container max-w-6xl mx-auto px-4 py-6 mt-28">
-    @if (IsLoading)
-    {
-        <div class="loading text-center text-actionPrimary-default text-lg py-6">Loading...</div>
-    }
-    else if (!string.IsNullOrEmpty(ErrorMessage))
-    {
-        <div class="error text-center text-red-500 text-lg py-6" role="alert">@ErrorMessage</div>
-    }
-    else
-    {
-        <!-- Hero Section -->
-        <div class="hero-section mb-6">
-            <div class="hero-card bg-white rounded-lg shadow-md flex items-center p-6 gap-6">
-                <div class="hero-text flex-1">
-                    <h1 class="hero-title text-actionPrimary-default text-2xl font-semibold animate-fade-in">Hi, @userName! Let’s Get to Work.</h1>
-                    <p class="hero-subtitle text-gray-500 text-sm mt-2 animate-fade-in">Submit your weekly report in just a few clicks.</p>
+                    <a href="/view-reports" class="see-all text-actionPrimary-default text-sm font-medium float-right mt-2">See All Reports</a>
                 </div>
-                <div class="hero-illustration">
-                    <i class="mdi mdi-clipboard-check text-actionPrimary-default text-6xl animate-bounce"></i>
-                </div>
-            </div>
-        </div>
 
-        <!-- Quick Actions -->
-        <div class="quick-actions grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-            @{
-                var actionCardClasses = "action-card bg-white border border-gray-200 rounded-lg p-6 text-center cursor-pointer hover:border-actionPrimary-default hover:-translate-y-1 transition-all relative";
-                var lastReportDate = RecentReports.Any() ? RecentReports.First().SubmissionDate : "N/A";
-            }
-            <div class="@actionCardClasses" @onclick="NavigateToSubmitReport">
-                <i class="mdi mdi-plus text-actionPrimary-default text-3xl mb-2"></i>
-                <h3 class="action-title text-gray-800 font-medium text-lg">Submit New Report</h3>
-            </div>
-            <div class="@actionCardClasses" @onclick="NavigateToViewReports">
-                <i class="mdi mdi-file-document text-actionPrimary-default text-3xl mb-2"></i>
-                <h3 class="action-title text-gray-800 font-medium text-lg">View Last Report</h3>
-                <p class="action-subtitle text-gray-500 text-sm mt-1">Submitted: @lastReportDate</p>
-            </div>
-            <div class="@actionCardClasses">
-                <i class="mdi mdi-alert-circle text-actionPrimary-default text-3xl mb-2"></i>
-                <h3 class="action-title text-gray-800 font-medium text-lg">Pending Actions</h3>
-                <span class="badge bg-red-500 text-white text-xs rounded-full px-2 py-1 absolute top-4 right-4">@PendingActions</span>
-            </div>
-        </div>
-
-        <!-- Recent Reports -->
-        <div class="recent-reports mb-6">
-            <h2 class="section-title text-actionPrimary-default text-xl font-semibold mb-4">Recent Reports</h2>
-            <div class="reports-table bg-white rounded-lg shadow-md overflow-hidden">
-                <div class="table-header grid grid-cols-4 p-4 bg-gray-50/5 font-semibold text-gray-500">
-                    <span class="table-column">Report Title</span>
-                    <span class="table-column">Submission Date</span>
-                    <span class="table-column">Status</span>
-                    <span class="table-column">Actions</span>
-                </div>
-                @if (RecentReports.Any())
-                {
-                    @foreach (var report in RecentReports)
-                    {
-                        var statusClass = report.Status == "Approved" ? "text-actionPrimary-default" : "text-yellow-500";
-                        <div class="table-row grid grid-cols-4 p-4 border-b border-gray-200 hover:bg-actionPrimary-default/10">
-                            <span class="table-column text-sm text-gray-800">@report.Title</span>
-                            <span class="table-column text-sm text-gray-800">@report.SubmissionDate</span>
-                            <span class="table-column text-sm @statusClass">@report.Status</span>
-                            <span class="table-column">
-                                <button class="action-btn bg-actionPrimary-default text-white px-3 py-1 rounded hover:bg-actionPrimary-hover hover:scale-105 transition-all">View</button>
-                            </span>
+                <!-- Progress Widget -->
+                <div class="progress-widget mb-6">
+                    <h2 class="section-title text-actionPrimary-default text-xl font-semibold mb-4">Progress Overview</h2>
+                    <div class="progress-card bg-white border border-actionPrimary-default rounded-lg p-6 text-center">
+                        @{
+                            var circumference = 2 * Math.PI * 40; // Circumference for radius 40
+                            var strokeDashOffset = circumference * (1 - Progress.Percentage / 100);
+                        }
+                        <svg class="progress-ring relative mx-auto" width="100" height="100">
+                            <circle class="progress-ring-circle" cx="50" cy="50" r="40" stroke-width="8" fill="none" stroke="#E5E7EB" />
+                            <circle class="progress-ring-fill" cx="50" cy="50" r="40" stroke-width="8" fill="none" stroke="#2E7D32" stroke-dasharray="@circumference" stroke-dashoffset="@strokeDashOffset" transform="rotate(-90 50 50)" />
+                            <text x="50" y="55" class="progress-text text-actionPrimary-default font-semibold text-lg">@Progress.Percentage%</text>
+                        </svg>
+                        <p class="progress-subtitle text-gray-500 text-sm mt-2">@Progress.ReportCount</p>
+                        <div class="streak flex justify-center items-center gap-2 mt-4">
+                            <span class="streak-text text-gray-800 text-sm">@Progress.Streak</span>
+                            <span class="streak-emoji text-lg">🔥</span>
                         </div>
-                    }
-                }
-                else
-                {
-                    <div class="no-data text-center text-gray-500 text-sm p-4">No recent reports available.</div>
-                }
-            </div>
-            <a href="/view-reports" class="see-all text-actionPrimary-default text-sm font-medium float-right mt-2">See All Reports</a>
-        </div>
+                    </div>
+                </div>
+            }
+        </main>
 
-        <!-- Progress Widget -->
-        <div class="progress-widget mb-6">
-            <h2 class="section-title text-actionPrimary-default text-xl font-semibold mb-4">Progress Overview</h2>
-            <div class="progress-card bg-white border border-actionPrimary-default rounded-lg p-6 text-center">
-                @{
-                    var circumference = 2 * Math.PI * 40; // Circumference for radius 40
-                    var strokeDashOffset = circumference * (1 - Progress.Percentage / 100);
-                }
-                <svg class="progress-ring relative mx-auto" width="100" height="100">
-                    <circle class="progress-ring-circle" cx="50" cy="50" r="40" stroke-width="8" fill="none" stroke="#E5E7EB" />
-                    <circle class="progress-ring-fill" cx="50" cy="50" r="40" stroke-width="8" fill="none" stroke="#2E7D32" stroke-dasharray="@circumference" stroke-dashoffset="@strokeDashOffset" transform="rotate(-90 50 50)" />
-                    <text x="50" y="55" class="progress-text text-actionPrimary-default font-semibold text-lg">@Progress.Percentage%</text>
-                </svg>
-                <p class="progress-subtitle text-gray-500 text-sm mt-2">@Progress.ReportCount</p>
-                <div class="streak flex justify-center items-center gap-2 mt-4">
-                    <span class="streak-text text-gray-800 text-sm">@Progress.Streak</span>
-                    <span class="streak-emoji text-lg">🔥</span>
+        <!-- Footer -->
+        <footer class="footer bg-actionPrimary-default fixed bottom-0 w-full py-3">
+            <div class="footer-content max-w-6xl mx-auto px-4 flex justify-between items-center">
+                <div class="footer-logo flex items-center gap-2">
+                    <img src="/logo.png" alt="StaffTrack Logo" class="w-6 h-6" />
+                    <h3 class="text-white font-semibold text-base">StaffTrack</h3>
+                </div>
+                <div class="footer-links flex items-center gap-3">
+                    <p class="footer-copyright text-white/80 text-sm">© 2025 StaffTrack</p>
+                    <a href="#" class="footer-link text-white/80 text-sm hover:text-white">Privacy Policy</a>
+                    <a href="#" class="footer-link text-white/80 text-sm hover:text-white">Support</a>
                 </div>
             </div>
-        </div>
-    }
+        </footer>
+    </div>
 </div>
 
-<!-- Footer -->
-<footer class="footer bg-actionPrimary-default fixed bottom-0 w-full py-3">
-    <div class="footer-content max-w-6xl mx-auto px-4 flex justify-between items-center">
-        <div class="footer-logo">
-            <img src="/logo.png" alt="StaffTrack Logo" />
-            <h3 class="text-white font-semibold text-base">StaffTrack</h3>
-        </div>
-        <div class="footer-links flex items-center gap-3">
-            <p class="footer-copyright text-white/80 text-sm">© 2025 StaffTrack</p>
-            <a href="#" class="footer-link text-white/80 text-sm hover:text-white">Privacy Policy</a>
-            <a href="#" class="footer-link text-white/80 text-sm hover:text-white">Support</a>
-        </div>
-    </div>
-</footer>
-
 @code {
-    private bool IsMobileMenuOpen { get; set; }
     private bool IsNotificationOpen { get; set; }
     private bool IsLoading { get; set; }
     private string? ErrorMessage { get; set; }
@@ -207,6 +296,7 @@
     private ProgressDTO Progress { get; set; } = new();
     private List<NotificationDTO> Notifications { get; set; } = new();
     private int UnreadNotifications { get; set; }
+    private int TotalReports { get; set; }
     private int PendingActions { get; set; }
 
     protected override async Task OnInitializedAsync()
@@ -240,6 +330,7 @@
             Progress = await progressTask;
             Notifications = await notificationsTask;
 
+            TotalReports = RecentReports.Count;
             UnreadNotifications = Notifications.Count(n => !n.IsRead);
             PendingActions = RecentReports.Count(r => r.Status == "Pending");
         }
@@ -251,11 +342,6 @@
         {
             IsLoading = false;
         }
-    }
-
-    private void ToggleMobileMenu()
-    {
-        IsMobileMenuOpen = !IsMobileMenuOpen;
     }
 
     private void ToggleNotifications()
@@ -279,16 +365,6 @@
     {
         await LoginService.LogoutAsync();
         Navigation.NavigateTo("/");
-    }
-
-    private void NavigateToSubmitReport()
-    {
-        Navigation.NavigateTo("/submit-reports");
-    }
-
-    private void NavigateToViewReports()
-    {
-        Navigation.NavigateTo("/view-reports");
     }
 
     public void Dispose()
