@@ -62,8 +62,16 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -74,8 +82,7 @@
               "RelativeToolTip": "StaffTrackUI\\Pages\\Notifications.razor.css",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAGABAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-05-02T11:52:24.784Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-02T11:52:24.784Z"
             },
             {
               "$type": "Document",
@@ -87,8 +94,7 @@
               "RelativeToolTip": "StaffTrackUI\\Pages\\Notifications.razor",
               "ViewState": "AgIAAHgAAAAAAAAAAAAAAJAAAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-02T11:38:18.967Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-02T11:38:18.967Z"
             },
             {
               "$type": "Document",
@@ -104,10 +110,6 @@
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "Home.razor",
@@ -117,8 +119,7 @@
               "RelativeToolTip": "StaffTrackUI\\Pages\\Home.razor",
               "ViewState": "AgIAAHUAAAAAAAAAAAAAACgAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-29T12:19:56.265Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-29T12:19:56.265Z"
             },
             {
               "$type": "Document",
@@ -130,8 +131,7 @@
               "RelativeToolTip": "StaffTrackUI\\Services\\DashboardService.cs",
               "ViewState": "AgIAACQAAAAAAAAAAAA7wDQAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-29T13:08:00.008Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-29T13:08:00.008Z"
             },
             {
               "$type": "Document",
@@ -155,8 +155,7 @@
               "RelativeToolTip": "StaffTrackUI\\Services\\LoginService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEUAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-29T16:57:53.105Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-29T16:57:53.105Z"
             },
             {
               "$type": "Document",
