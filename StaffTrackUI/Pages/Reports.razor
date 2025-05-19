@@ -1,0 +1,314 @@
+﻿@page "/view-reports"
+@layout EmptyLayout
+@using StaffTrackShared.DTOs
+@using StaffTrackUI.Services
+@inject NavigationManager Navigation
+@inject DashboardService DashboardService
+@inject LoginService LoginService
+@inject HttpClient HttpClient
+@implements IDisposable
+
+<PageTitle>StaffTrack - View Reports</PageTitle>
+
+<div class="flex h-screen bg-gray-100">
+    <!-- Sidebar -->
+    <div class="w-64 h-screen bg-white flex flex-col justify-between">
+        <!-- Sidebar Menu -->
+        <div>
+            <div class="p-4">
+                <div class="logo flex items-center gap-2">
+                    <img src="/logo.png" alt="StaffTrack Logo" class="w-6 h-6" />
+                    <h1 class="text-xl font-bold text-actionPrimary-default">StaffTrack</h1>
+                </div>
+            </div>
+            <nav class="mt-4">
+                <a href="/home" class="sidebar-item @(Navigation.Uri.EndsWith("/home") ? "active" : "")">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7m-9 2v7h4v-7m-4 0H5l7-7"></path>
+                    </svg>
+                    Dashboard
+                </a>
+                <a href="/submit-report" class="sidebar-item @(Navigation.Uri.EndsWith("/submit-report") ? "active" : "")">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-6h6v6m-3-9v12m-6 0h12"></path>
+                    </svg>
+                    Submit Report
+                </a>
+                <a href="/view-reports" class="sidebar-item @(Navigation.Uri.EndsWith("/view-reports") ? "active" : "")">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-6h6v6m-3-9v12m-6 0h12"></path>
+                    </svg>
+                    Reports
+                </a>
+                <a href="/notifications" class="sidebar-item @(Navigation.Uri.EndsWith("/notifications") ? "active" : "")">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-6h6v6m-3-9v12m-6 0h12"></path>
+                    </svg>
+                    Notifications
+                </a>
+                <a href="/settings" class="sidebar-item @(Navigation.Uri.EndsWith("/settings") ? "active" : "")">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37a1.724 1.724 0 002.572-1.065z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    Settings
+                </a>
+            </nav>
+        </div>
+
+        <!-- Help & Support -->
+        <div class="p-4">
+            <div class="bg-gray-100 rounded-lg p-3 flex items-center">
+                <svg class="w-5 h-5 text-actionPrimary-default mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636a9 9 0 11-12.728 0 9 9 0 0112.728 0zM12 8v4m0 4h.01"></path>
+                </svg>
+                <div>
+                    <p class="text-sm font-medium text-gray-700">Need help?</p>
+                    <p class="text-xs text-gray-500">Please contact support.</p>
+                </div>
+            </div>
+            <button class="mt-2 w-full btn">Help & Support</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content max-w-7xl">
+                <div class="logo flex items-center gap-2">
+                    <img src="/logo.png" alt="StaffTrack Logo" class="w-6 h-6" />
+                    <h3 class="text-actionPrimary-default font-semibold text-lg">StaffTrack</h3>
+                </div>
+                <div class="user-profile">
+                    @{
+                        var avatarInitial = LoginService.CurrentUser?.FullName?.FirstOrDefault() ?? 'A';
+                        var userName = LoginService.CurrentUser?.FullName ?? "User";
+                    }
+                    <div class="notifications relative">
+                        <button class="notification-btn text-actionPrimary-default text-lg" @onclick="ToggleNotifications">
+                            <i class="mdi mdi-bell-outline"></i>
+                            @if (UnreadNotifications > 0)
+                            {
+                                <span class="notification-badge bg-red-500 text-white text-xs rounded-full px-2 py-0.5 absolute -top-1 -right-1">@UnreadNotifications</span>
+                            }
+                        </button>
+                        @if (IsNotificationOpen)
+                        {
+                            <div class="notification-dropdown absolute right-0 mt-2 bg-white rounded-lg shadow-lg w-64 animate-slide-down">
+                                @if (Notifications.Any())
+                                {
+                                    @foreach (var notification in Notifications)
+                                    {
+                                        var itemClass = notification.IsRead ? "bg-gray-100" : "bg-white";
+                                        var messageClass = notification.IsRead ? "text-actionPrimary-default" : "text-gray-800";
+                                        <div class="notification-item px-3 py-2 border-b border-gray-200 @itemClass">
+                                            <p class="notification-message text-sm @messageClass">@notification.Message</p>
+                                            <span class="notification-timestamp text-xs text-gray-500">@notification.Timestamp</span>
+                                        </div>
+                                    }
+                                    <button class="mark-all-read w-full btn rounded-b-lg" @onclick="MarkAllAsRead">Mark All as Read</button>
+                                }
+                                else
+                                {
+                                    <p class="no-notifications px-3 py-2 text-sm text-gray-500">No notifications</p>
+                                }
+                            </div>
+                        }
+                    </div>
+                    <div class="avatar">
+                        @avatarInitial
+                    </div>
+                    <span class="user-name text-sm text-gray-800">Welcome, @userName!</span>
+                    <button class="logout-btn border border-actionPrimary-default text-actionPrimary-default px-2 py-1 rounded hover:bg-actionPrimary-default hover:text-white transition" @onclick="HandleLogout">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <main class="main-content">
+            @if (!LoginService.IsAuthenticated())
+            {
+                <div class="error text-center text-red-500 text-lg py-6" role="alert">
+                    Please log in to view reports.
+                </div>
+            }
+            else if (IsLoading)
+            {
+                <div class="loading text-center text-actionPrimary-default text-lg py-6">Loading...</div>
+            }
+            else if (!string.IsNullOrEmpty(ErrorMessage))
+            {
+                <div class="error text-center text-red-500 text-lg py-6" role="alert">@ErrorMessage</div>
+            }
+            else
+            {
+                <!-- Breadcrumb -->
+                <nav class="flex mb-4" aria-label="Breadcrumb">
+                    <ol class="inline-flex items-center space-x-1">
+                        <li class="inline-flex items-center">
+                            <a href="/home" class="text-actionPrimary-default hover:underline text-sm">Dashboard</a>
+                        </li>
+                        <li>
+                            <span class="text-gray-500 mx-1 text-sm">></span>
+                            <span class="text-gray-700 text-sm">View Reports</span>
+                        </li>
+                    </ol>
+                </nav>
+
+                <!-- Reports Section -->
+                <div class="reports-section card">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="section-title text-actionPrimary-default text-lg font-semibold">All Reports</h2>
+                        <button class="submit-report-btn btn" @onclick="NavigateToSubmitReport">Submit Report</button>
+                    </div>
+                    <!-- Search Bar -->
+                    <div class="search-bar mb-4">
+                        <input type="text"
+                               placeholder="Search by title or status..."
+                               @bind="SearchQuery"
+                               @bind:event="oninput" />
+                    </div>
+                    <!-- Reports Table -->
+                    <div class="reports-table">
+                        <div class="table-header">
+                            <span class="table-column">Report Title</span>
+                            <span class="table-column">Submission Date</span>
+                            <span class="table-column">Status</span>
+                            <span class="table-column">Actions</span>
+                        </div>
+                        @if (FilteredReports.Any())
+                        {
+                            @foreach (var report in FilteredReports)
+                            {
+                                var statusClass = report.Status == "Approved" ? "text-actionPrimary-default" : report.Status == "Pending" ? "text-yellow-500" : "text-red-500";
+                                <div class="table-row">
+                                    <span class="table-column text-sm text-gray-800">@report.Title</span>
+                                    <span class="table-column text-sm text-gray-800">@report.SubmissionDate</span>
+                                    <span class="table-column text-sm @statusClass">@report.Status</span>
+                                    <span class="table-column">
+                                        <button class="btn action-btn" @onclick="() => ViewReport(report.Id)">View</button>
+                                    </span>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="no-data text-center text-gray-500 text-sm p-3">No reports found.</div>
+                        }
+                    </div>
+                </div>
+            }
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content max-w-7xl">
+                <div class="footer-logo flex items-center gap-1">
+                    <img src="/logo.png" alt="StaffTrack Logo" class="w-5 h-5" />
+                    <h3 class="text-white font-semibold text-sm">StaffTrack</h3>
+                </div>
+                <div class="footer-links flex items-center gap-2">
+                    <p class="footer-copyright text-white text-opacity-80 text-xs">© 2025 StaffTrack</p>
+                    <a href="#" class="footer-link text-white text-opacity-80 text-xs hover:text-white">Privacy Policy</a>
+                    <a href="#" class="footer-link text-white text-opacity-80 text-xs hover:text-white">Support</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+@code {
+    private bool IsNotificationOpen { get; set; }
+    private bool IsLoading { get; set; }
+    private string? ErrorMessage { get; set; }
+    private List<ReportDTO> Report { get; set; } = new();
+    private List<NotificationDTO> Notifications { get; set; } = new();
+    private int UnreadNotifications { get; set; }
+    private string SearchQuery { get; set; } = string.Empty;
+
+    private List<ReportDTO> FilteredReports => string.IsNullOrWhiteSpace(SearchQuery)
+        ? Report
+        : Report.Where(r => r.Title.Contains(SearchQuery, StringComparison.OrdinalIgnoreCase) ||
+                            r.Status.Contains(SearchQuery, StringComparison.OrdinalIgnoreCase)).ToList();
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Subscribe to user changes
+        LoginService.OnUserChanged += StateHasChanged;
+
+        // Load user from local storage if not already loaded
+        if (LoginService.CurrentUser == null)
+        {
+            await LoginService.LoadUserFromLocalStorageAsync();
+        }
+
+        // Redirect to login if not authenticated
+        if (!LoginService.IsAuthenticated())
+        {
+            Navigation.NavigateTo("/");
+            return;
+        }
+
+        IsLoading = true;
+        try
+        {
+            // Fetch all reports and notifications
+            var reportsTask = DashboardService.GetAllReportsAsync();
+            var notificationsTask = DashboardService.GetNotificationsAsync();
+
+            await Task.WhenAll(reportsTask, notificationsTask);
+
+            Report = await reportsTask;
+            Notifications = await notificationsTask;
+
+            UnreadNotifications = Notifications.Count(n => !n.IsRead);
+        }
+        catch
+        {
+            ErrorMessage = "Failed to load reports. Please try again.";
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+
+    private void ToggleNotifications()
+    {
+        IsNotificationOpen = !IsNotificationOpen;
+    }
+
+    private async Task MarkAllAsRead()
+    {
+        if (await DashboardService.MarkAllNotificationsAsReadAsync())
+        {
+            foreach (var notification in Notifications)
+            {
+                notification.IsRead = true;
+            }
+            UnreadNotifications = 0;
+        }
+    }
+
+    private async Task HandleLogout()
+    {
+        await LoginService.LogoutAsync();
+        Navigation.NavigateTo("/");
+    }
+
+    private void NavigateToSubmitReport()
+    {
+        Navigation.NavigateTo("/submit-report");
+    }
+
+    private void ViewReport(int reportId)
+    {
+        Navigation.NavigateTo($"/report/{reportId}");
+    }
+
+    public void Dispose()
+    {
+        LoginService.OnUserChanged -= StateHasChanged;
+    }
+}

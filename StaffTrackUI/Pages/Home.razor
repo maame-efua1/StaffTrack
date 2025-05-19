@@ -10,9 +10,9 @@
 
 <PageTitle>StaffTrack - Dashboard</PageTitle>
 
-<div class="flex h-screen bg-gray-50 dark:bg-zinc-900">
+<div class="flex h-screen bg-[#f3f3f3]">
     <!-- Sidebar -->
-    <div class="w-64 h-screen bg-gray-100 dark:bg-zinc-800 flex flex-col justify-between">
+    <div class="w-64 h-screen bg-[#ffffff] flex flex-col justify-between">
         <!-- Sidebar Menu -->
         <div>
             <div class="p-4">
@@ -28,25 +28,25 @@
                     </svg>
                     Dashboard
                 </a>
-                <a href="/submit-report" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-actionPrimary-default hover:text-white @(Navigation.Uri.EndsWith("/submit-report") ? "bg-actionPrimary-default text-white" : "")">
+                <a href="/submit-report" class="flex items-center px-4 py-3 text-gray-800 hover:bg-actionPrimary-default hover:text-white @(Navigation.Uri.EndsWith("/submit-report") ? "bg-actionPrimary-default text-white" : "")">
                     <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-6h6v6m-3-9v12m-6 0h12"></path>
                     </svg>
-                    Submitting Report
+                    Submit Report
                 </a>
-                <a href="/view-reports" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-actionPrimary-default hover:text-white @(Navigation.Uri.EndsWith("/view-reports") ? "bg-actionPrimary-default text-white" : "")">
+                <a href="/view-reports" class="flex items-center px-4 py-3 text-gray-800 hover:bg-actionPrimary-default hover:text-white @(Navigation.Uri.EndsWith("/view-reports") ? "bg-actionPrimary-default text-white" : "")">
                     <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-6h6v6m-3-9v12m-6 0h12"></path>
                     </svg>
-                    View Reports
+                    Reports
                 </a>
-                <a href="/notifications" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-actionPrimary-default hover:text-white @(Navigation.Uri.EndsWith("/notifications") ? "bg-actionPrimary-default text-white" : "")">
+                <a href="/notifications" class="flex items-center px-4 py-3 text-gray-800 hover:bg-actionPrimary-default hover:text-white @(Navigation.Uri.EndsWith("/notifications") ? "bg-actionPrimary-default text-white" : "")">
                     <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-6h6v6m-3-9v12m-6 0h12"></path>
                     </svg>
-                    View Notifications
+                    Notifications
                 </a>
-                <a href="/settings" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-actionPrimary-default hover:text-white @(Navigation.Uri.EndsWith("/settings") ? "bg-actionPrimary-default text-white" : "")">
+                <a href="/settings" class="flex items-center px-4 py-3 text-gray-800 hover:bg-actionPrimary-default hover:text-white @(Navigation.Uri.EndsWith("/settings") ? "bg-actionPrimary-default text-white" : "")">
                     <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37a1.724 1.724 0 002.572-1.065z"></path>
                         <circle cx="12" cy="12" r="3"></circle>
@@ -58,13 +58,13 @@
 
         <!-- Help & Support -->
         <div class="p-4">
-            <div class="bg-gray-200 dark:bg-zinc-700 rounded-lg p-4 flex items-center">
+            <div class="bg-[#f3f3f3] rounded-lg p-4 flex items-center">
                 <svg class="w-6 h-6 text-actionPrimary-default mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636a9 9 0 11-12.728 0 9 9 0 0112.728 0zM12 8v4m0 4h.01"></path>
                 </svg>
                 <div>
-                    <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Need help?</p>
-                    <p class="text-xs text-gray-500 dark:text-gray-400">Please contact support.</p>
+                    <p class="text-sm font-medium text-gray-700">Need help?</p>
+                    <p class="text-xs text-gray-500">Please contact support.</p>
                 </div>
             </div>
             <button class="mt-2 w-full bg-actionPrimary-default text-white py-2 rounded-lg hover:bg-actionPrimary-hover">
@@ -122,7 +122,7 @@
                         @avatarInitial
                     </div>
                     <span class="user-name text-sm text-gray-800">Welcome, @userName!</span>
-                    <button class="logout-btn border border-actionPrimary-default text-actionPrimary-default px-3 py-1 rounded hover:bg-actionPrimary-default hover:text-white" @onclick="HandleLogout">Logout</button>
+                    <button class="logout-btn border border-actionPrimary-default text-actionPrimary-default px-3 py-1 rounded Hover:bg-actionPrimary-default hover:text-white" @onclick="HandleLogout">Logout</button>
                 </div>
             </div>
         </header>
@@ -153,7 +153,7 @@
                         </li>
                         <li>
                             <span class="text-gray-500 mx-1">></span>
-                            <span class="text-gray-700 dark:text-gray-300">Dashboard</span>
+                            <span class="text-gray-700">Dashboard</span>
                         </li>
                     </ol>
                 </nav>
@@ -161,59 +161,57 @@
                 <!-- Summary Cards -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
                     <!-- Total Reports -->
-                    <div class="bg-white dark:bg-zinc-800 rounded-lg shadow-md p-6 flex items-center">
-                        <div class="p-3 rounded-full bg-gray-100 dark:bg-zinc-700 mr-4">
+                    <div class="bg-white rounded-lg shadow-md p-6 flex items-center">
+                        <div class="p-3 rounded-full bg-gray-100 mr-4">
                             <svg class="w-6 h-6 text-actionPrimary-default" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-6h6v6m-3-9v12m-6 0h12"></path>
                             </svg>
                         </div>
                         <div>
-                            <p class="text-gray-500 dark:text-gray-400 text-sm">Total Reports</p>
-                            <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-300">@TotalReports</h3>
+                            <p class="text-gray-500 text-sm">Total Reports</p>
+                            <h3 class="text-2xl font-semibold text-gray-700">@TotalReports</h3>
                         </div>
                     </div>
 
                     <!-- Unread Notifications -->
-                    <div class="bg-white dark:bg-zinc-800 rounded-lg shadow-md p-6 flex items-center">
-                        <div class="p-3 rounded-full bg-gray-100 dark:bg-zinc-700 mr-4">
+                    <div class="bg-white rounded-lg shadow-md p-6 flex items-center">
+                        <div class="p-3 rounded-full bg-gray-100 mr-4">
                             <svg class="w-6 h-6 text-actionPrimary-default" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 00-5-5.917V4a1 1 0 10-2 0v1.083A6 6 0 006 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0a2 2 0 01-4 0"></path>
                             </svg>
                         </div>
                         <div>
-                            <p class="text-gray-500 dark:text-gray-400 text-sm">Unread Notifications</p>
-                            <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-300">@UnreadNotifications</h3>
+                            <p class="text-gray-500 text-sm">Unread Notifications</p>
+                            <h3 class="text-2xl font-semibold text-gray-700">@UnreadNotifications</h3>
                         </div>
                     </div>
 
                     <!-- Pending Actions -->
-                    <div class="bg-white dark:bg-zinc-800 rounded-lg shadow-md p-6 flex items-center">
-                        <div class="p-3 rounded-full bg-gray-100 dark:bg-zinc-700 mr-4">
+                    <div class="bg-white rounded-lg shadow-md p-6 flex items-center">
+                        <div class="p-3 rounded-full bg-gray-100 mr-4">
                             <svg class="w-6 h-6 text-actionPrimary-default" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0-1.104-.896-2-2-2H6c-1.104 0-2 .896-2 2v5c0 1.104.896 2 2 2h4c1.104 0 2-.896 2-2v-5zm8-6h-4c-1.104 0-2 .896-2 2v9c0 1.104.896 2 2 2h4c1.104 0 2-.896 2-2V7c0-1.104-.896-2-2-2z"></path>
                             </svg>
                         </div>
                         <div>
-                            <p class="text-gray-500 dark:text-gray-400 text-sm">Pending Actions</p>
-                            <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-300">@PendingActions</h3>
+                            <p class="text-gray-500 text-sm">Pending Actions</p>
+                            <h3 class="text-2xl font-semibold text-gray-700">@PendingActions</h3>
                         </div>
                     </div>
 
                     <!-- Progress Percentage -->
-                    <div class="bg-white dark:bg-zinc-800 rounded-lg shadow-md p-6 flex items-center">
-                        <div class="p-3 rounded-full bg-gray-100 dark:bg-zinc-700 mr-4">
+                    <div class="bg-white rounded-lg shadow-md p-6 flex items-center">
+                        <div class="p-3 rounded-full bg-gray-100 mr-4">
                             <svg class="w-6 h-6 text-actionPrimary-default" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-2a2 2 0 00-2-2H5a2 2 0 00-2 2v2m6 0h6m-3-7v8m-6 0h12m-6-7a3 3 0 11-6 0 3 3 0 016 0z"></path>
                             </svg>
                         </div>
                         <div>
-                            <p class="text-gray-500 dark:text-gray-400 text-sm">Progress</p>
-                            <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-300">@Progress.Percentage%</h3>
+                            <p class="text-gray-500 text-sm">Progress</p>
+                            <h3 class="text-2xl font-semibold text-gray-700">@Progress.Percentage%</h3>
                         </div>
                     </div>
                 </div>
-
-                
 
                 <!-- Recent Reports -->
                 <div class="recent-reports mb-6">

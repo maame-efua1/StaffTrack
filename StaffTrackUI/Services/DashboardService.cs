@@ -7,11 +7,14 @@ namespace StaffTrackUI.Services;
 public class DashboardService
 {
     private readonly HttpClient _httpClient;
+    private readonly LoginService _loginService;
 
-    public DashboardService(HttpClient httpClient)
+    public DashboardService(HttpClient httpClient, LoginService loginService)
     {
         _httpClient = httpClient;
+        _loginService = loginService;
     }
+    
 
     public async Task<List<ReportDTO>> GetRecentReportsAsync()
     {
@@ -60,6 +63,49 @@ public class DashboardService
         catch
         {
             return false;
+        }
+    }
+
+    private class ApiResponse<T>
+    {
+        public string Message { get; set; } = string.Empty;
+        public T Data { get; set; } = default!;
+    }
+
+    public async Task<List<ReportDTO>> GetAllReportsAsync()
+    {
+        // Get the current user's ID from LoginService
+        var userId = _loginService.CurrentUser?.Id;
+        if (string.IsNullOrEmpty(userId))
+        {
+            // Return empty list if user is not authenticated
+            return new List<ReportDTO>();
+        }
+
+        try
+        {
+            // Call the API endpoint with userId
+            var response = await _httpClient.GetAsync($"Report/user/{userId}");
+            if (response.IsSuccessStatusCode)
+            {
+                // Deserialize the wrapped response
+                var apiResponse = await response.Content.ReadFromJsonAsync<ApiResponse<List<ReportDTO>>>();
+                return apiResponse?.Data ?? new List<ReportDTO>();
+            }
+
+            // Handle NotFound (404)
+            if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return new List<ReportDTO>();
+            }
+
+            // Throw exception for other errors
+            throw new HttpRequestException($"Failed to fetch reports: {response.ReasonPhrase}");
+        }
+        catch (Exception ex)
+        {
+            // Log the error (logging not implemented here, add if needed)
+            throw new HttpRequestException($"Error fetching reports: {ex.Message}", ex);
         }
     }
 }

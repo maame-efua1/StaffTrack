@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "StaffTrackUI",
   "resources": {
-    "hash": "sha256-ZB7Nw6nDs/Pa/Ds1WI5dSTB6MLgaMvjHY4s4GarJ5ZE=",
+    "hash": "sha256-1i72GrgkYacyiLjXQc8FQbJG4VjgqOpzRcq14qm7ELc=",
     "jsModuleNative": {
       "dotnet.native.js": "sha256-VdKq87/z5NIxZKmuM+fv38XF+RcEb/bg3jVBwQSfwP4="
     },
@@ -224,12 +224,12 @@
       "mscorlib.wasm": "sha256-04e4k5XU8HWGB/dq/2+j84xzzGPflTs0IYWI0OxogVc=",
       "netstandard.wasm": "sha256-gnGZURPnoSmjXuYNCOJi5tt8qn2LRImWgue1Ru3/TDQ=",
       "System.Private.CoreLib.wasm": "sha256-6w3jYr0arcp8jnt4aeqh+AmqrLA6q7jl9rQYAwLzE0M=",
-      "StaffTrackShared.wasm": "sha256-UGsgjUeBDTmHu1l/YTxiSPzAy+tkqK3Y5IGFpS9Y0dk=",
-      "StaffTrackUI.wasm": "sha256-fes71617BN/3n2I0dVCyYFyRll1lh7cogonN9//GE9U="
+      "StaffTrackShared.wasm": "sha256-yCfq/cmvmAqi+n5E3/udUBT+hmDIFdsRMqFcM+LRMdA=",
+      "StaffTrackUI.wasm": "sha256-ljEwwW+X6K0XXEvtehwwms1kejaYufS2oGKrLmS+cyk="
     },
     "pdb": {
-      "StaffTrackShared.pdb": "sha256-9HBWuCQrb0uTd71A2aPmSrXRsHpWGi+ysvcNc4DZS78=",
-      "StaffTrackUI.pdb": "sha256-mHuFQ56n8VLfyeRLY0svpsFDm3LGEHOC9UD3jOrhCHU="
+      "StaffTrackShared.pdb": "sha256-x24lrcpokEYe7sMws9wubo6uLOHjEOfIJqce29dkXlA=",
+      "StaffTrackUI.pdb": "sha256-FFNMA5fpFqFRP2P2m9xxqnL5+exFAZAd8WnqttDpW40="
     }
   },
   "cacheBootResources": true,

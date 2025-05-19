@@ -36,10 +36,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Eugenia Efua Quartey/source/repos/StaffTrack/StaffTrackUI/Pages/SubmitReports.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3VibWl0UmVwb3J0cy5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Eugenia Efua Quartey/source/repos/StaffTrack/StaffTrackUI/Pages/Weather.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2VhdGhlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -67,3 +63,11 @@ build_metadata.AdditionalFiles.CssScope = b-brfkja4r5q
 [C:/Users/Eugenia Efua Quartey/source/repos/StaffTrack/StaffTrackUI/Pages/Notifications.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTm90aWZpY2F0aW9ucy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-jxapsg5405
+
+[C:/Users/Eugenia Efua Quartey/source/repos/StaffTrack/StaffTrackUI/Pages/Reports.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVwb3J0cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-73dk70jjhu
+
+[C:/Users/Eugenia Efua Quartey/source/repos/StaffTrack/StaffTrackUI/Pages/SubmitReports.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3VibWl0UmVwb3J0cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-gl7n5yk53c

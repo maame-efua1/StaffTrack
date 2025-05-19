@@ -156,8 +156,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName>ScopedCss</AssetTraitName>
       <AssetTraitValue>ApplicationBundle</AssetTraitValue>
-      <Fingerprint>7egjd2jad9</Fingerprint>
-      <Integrity>QQEiCZXUGDikAWRSdcyRbhqaWMoqHPq+gu5eN56ylSI=</Integrity>
+      <Fingerprint>n1lnm3f839</Fingerprint>
+      <Integrity>tYPw+AA3KgmAkczU/eLMzfAn2Oc6EOs9kZsIJABsRyk=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\StaffTrackUI.styles.css'))</OriginalItemSpec>

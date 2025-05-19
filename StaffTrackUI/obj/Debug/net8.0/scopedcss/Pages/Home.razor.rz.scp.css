@@ -64,10 +64,6 @@
     color: #374151;
 }
 
-.dark\:text-gray-300[b-nvzc4yp27e] {
-    color: #d1d5db;
-}
-
 .hover\:bg-actionPrimary-default:hover[b-nvzc4yp27e] {
     background-color: #2E7D32;
 }
@@ -106,10 +102,6 @@
     background-color: #e5e7eb;
 }
 
-.dark\:bg-zinc-700[b-nvzc4yp27e] {
-    background-color: #3f3f46;
-}
-
 .rounded-lg[b-nvzc4yp27e] {
     border-radius: 0.5rem;
 }
@@ -124,10 +116,6 @@
 
 .text-gray-500[b-nvzc4yp27e] {
     color: #6b7280;
-}
-
-.dark\:text-gray-400[b-nvzc4yp27e] {
-    color: #9ca3af;
 }
 
 .text-xs[b-nvzc4yp27e] {
@@ -157,10 +145,6 @@
 
 .bg-white[b-nvzc4yp27e] {
     background-color: #ffffff;
-}
-
-.dark\:bg-zinc-800[b-nvzc4yp27e] {
-    background-color: #27272a;
 }
 
 .shadow-sm[b-nvzc4yp27e] {
@@ -285,7 +269,7 @@
 }
 
 .bg-black[b-nvzc4yp27e] {
-    background-color: #ffffff;
+    background-color: #333333;
 }
 
 .bg-opacity-50[b-nvzc4yp27e] {
@@ -294,10 +278,6 @@
 
 .text-gray-50[b-nvzc4yp27e] {
     background-color: #f9fafb;
-}
-
-.dark\:bg-zinc-900[b-nvzc4yp27e] {
-    background-color: #18181b;
 }
 
 .font-semibold[b-nvzc4yp27e] {
@@ -445,7 +425,7 @@
 }
 
 .rounded-b-lg[b-nvzc4yp27e] {
-    border-bottom-left-radius: 0.5 рем;
+    border-bottom-left-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
 }
 
